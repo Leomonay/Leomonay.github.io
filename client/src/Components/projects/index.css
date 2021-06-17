@@ -1,0 +1,27 @@
+.bodyProjects{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    width: 80%;
+    margin: auto;
+}
+.content{
+    margin: 15px 0px;
+    display:grid;
+    grid-template-columns: repeat(
+        2, 2fr
+    );
+}
+.eachProject{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.projectButton{
+    width: 30vw;
+    height: 200px;
+    border-radius: 25%;
+}

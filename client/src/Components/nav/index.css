@@ -1,0 +1,27 @@
+.navBar{
+    background-color:lightgoldenrodyellow;
+    text-align: center;
+    color: black;
+}
+.barTitle{
+    font-weight: bold;
+}
+.menuBar{
+    display:flex;
+    width:inherit;
+    padding: 10px 10%;
+    justify-content: center;
+ }
+ .navLink{
+    padding: 2px;
+    width: 100px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 0 5px;
+    color:brown;
+    font-size: 1.5rem;
+ }
+ .navLink:hover{
+    background-color:darksalmon;
+    color: white;
+ }
