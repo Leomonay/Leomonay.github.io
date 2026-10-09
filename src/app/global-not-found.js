@@ -8,7 +8,14 @@ import '@/styles/globals.css';
 // With two root layouts ([locale] and (root)) there is no single layout to build a 404
 // from, so Next needs a global one. It is exported as out/404.html, which GitHub Pages
 // serves for any unknown URL. We can't know the visitor's language here, so it shows both.
-export const metadata = { robots: { index: false } };
+export async function generateMetadata() {
+  const titles = await Promise.all(
+    routing.locales.map(async (locale) =>
+      (await getTranslations({ locale, namespace: 'notFound' }))('title'),
+    ),
+  );
+  return { title: titles.join(' / '), robots: { index: false } };
+}
 
 export default async function GlobalNotFound() {
   const blocks = await Promise.all(

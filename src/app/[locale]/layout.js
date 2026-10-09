@@ -1,9 +1,10 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getLocale } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import RevealObserver from '@/animations/RevealObserver';
 import HeadScripts from '@/components/HeadScripts';
 import { routing } from '@/i18n/routing';
 import { fontVariables } from '@/lib/fonts';
+import { localePath, OG_IMAGE_SIZE, SITE_URL } from '@/lib/site';
 import '@/styles/globals.css';
 
 // Only the locales listed in routing exist; anything else is a 404 at build time.
@@ -11,6 +12,54 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+// Per-locale <title>, description, canonical + hreflang alternates, Open Graph and
+// Twitter Card. The og/twitter image comes from ./opengraph-image.js.
+export async function generateMetadata() {
+  const locale = await getLocale();
+  const t = await getTranslations('meta');
+  // og:locale:alternate needs the other languages' codes (es_AR, en_US) from their own files.
+  const otherLocales = await Promise.all(
+    routing.locales
+      .filter((l) => l !== locale)
+      .map(async (l) => (await getTranslations({ locale: l, namespace: 'meta' }))('ogLocale')),
+  );
+
+  const title = t('title');
+  const description = t('description');
+  const url = localePath(locale);
+  const image = { url: `${url}og.png`, ...OG_IMAGE_SIZE, alt: t('ogImageAlt') };
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title,
+    description,
+    alternates: {
+      canonical: url,
+      languages: {
+        ...Object.fromEntries(routing.locales.map((l) => [l, localePath(l)])),
+        // The root page picks a language for visitors who match neither.
+        'x-default': '/',
+      },
+    },
+    openGraph: {
+      type: 'website',
+      url,
+      siteName: (await getTranslations('nav'))('brand'),
+      title,
+      description,
+      locale: t('ogLocale'),
+      alternateLocale: otherLocales,
+      images: [image],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [image],
+    },
+  };
 }
 
 // [locale] is a root layout (there is no app/layout.js above it), so it owns <html>

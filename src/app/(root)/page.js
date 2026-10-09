@@ -3,16 +3,21 @@ import Button from '@/components/ui/Button';
 import { routing } from '@/i18n/routing';
 import { localePath, SITE_URL } from '@/lib/site';
 
-export const metadata = {
-  metadataBase: new URL(SITE_URL),
-  alternates: {
-    canonical: '/',
-    languages: {
-      ...Object.fromEntries(routing.locales.map((l) => [l, localePath(l)])),
-      'x-default': '/',
+export async function generateMetadata() {
+  // The name reads the same in every language, so it's taken from the default locale.
+  const t = await getTranslations({ locale: routing.defaultLocale, namespace: 'nav' });
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: t('brand'),
+    alternates: {
+      canonical: '/',
+      languages: {
+        ...Object.fromEntries(routing.locales.map((l) => [l, localePath(l)])),
+        'x-default': '/',
+      },
     },
-  },
-};
+  };
+}
 
 // No-JS fallback: the inline script in the layout redirects before this renders.
 // Each link is labelled in its own language (and marked with `lang`/`hreflang`),
@@ -25,8 +30,13 @@ export default async function RootPage() {
     }),
   );
 
+  const brand = (await getTranslations({ locale: routing.defaultLocale, namespace: 'nav' }))(
+    'brand',
+  );
+
   return (
-    <main className="grid min-h-dvh place-items-center p-6">
+    <main className="grid min-h-dvh place-items-center content-center gap-8 p-6">
+      <h1 className="text-3xl font-bold">{brand}</h1>
       <ul className="flex flex-col gap-4 text-center sm:flex-row">
         {links.map(({ locale, label }) => (
           <li key={locale}>
