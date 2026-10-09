@@ -49,3 +49,10 @@
     transition: rotate 250ms var(--ease-out-expo);
   }
 }
+
+/* Without JS the panel is always open, so the toggle would only mislead. */
+@media (scripting: none) {
+  .disclosure-trigger {
+    display: none;
+  }
+}
