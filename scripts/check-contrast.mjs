@@ -29,7 +29,7 @@ const PAIRS = [
 ];
 
 function parseThemes(css) {
-  const blocks = css.matchAll(/@plugin\s+"daisyui\/theme"\s*\{([^}]*)\}/g);
+  const blocks = css.matchAll(/@plugin\s+["']daisyui\/theme["']\s*\{([^}]*)\}/g);
   return [...blocks].map(([, body]) => ({
     name: body.match(/name:\s*['"]([^'"]+)['"]/)[1],
     colors: Object.fromEntries(
