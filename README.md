@@ -61,7 +61,7 @@ src/
   components/
     navbar/               Navbar (server) + LanguageSwitcher, ThemeSwitcher, MobileMenu (client)
     sections/             Una sección por archivo; experience/ es la sección de referencia
-    ui/                   Primitivas: Button, Card, Disclosure, Section
+    ui/                   Primitivas: Button, Card, Disclosure, IconList, Section, Stat
   animations/             Todas las animaciones: CSS por efecto + RevealObserver
   lib/                    site.js (URL, perfiles), sections.js (ids), theme*, fonts, inline-scripts
   styles/globals.css      Tailwind, temas daisyUI, clases @apply
@@ -98,7 +98,7 @@ src/
 
 ### Estilos: `@apply` vs `tailwind-variants`
 
-- **`@apply` (en `globals.css`)** para estilos repetidos sin props: `.container-page`, `.section`, `.section-title`, `.section-lead`, `.tag`.
+- **`@apply` (en `globals.css`)** para estilos repetidos sin props: `.container-page`, `.section`, `.section-title`, `.section-lead`, `.tag` / `.tag-subtle`, `.eyebrow` y `.rail` / `.rail-item` (línea de tiempo compacta; no se llama `.timeline` porque daisyUI ya tiene un componente con ese nombre).
 - **`tailwind-variants`** para componentes con props: `Button` (`intent`, `size`, `square`) y `Card` (slots `root/header/title/meta/body`, variantes `tone` e `interactive`).
 - **Por qué `tailwind-variants` y no `cva`:** resuelve conflictos de clases con tailwind-merge sin configuración (un `className="px-8"` reemplaza el padding de la variante en vez de competir con él) y soporta _slots_, que `Card` necesita para estilar varias partes desde una sola definición.
 
@@ -110,6 +110,7 @@ Todo vive en `src/animations/`:
 - `RevealObserver.js`: un único `IntersectionObserver` para toda la página. Así las secciones siguen siendo Server Components y solo necesitan el atributo.
 - `effects/disclosure.css`: el desplegable anima `grid-template-rows: 0fr → 1fr`, que llega a la altura real sin medirla en JS. Cuando está cerrado aplica `visibility: hidden`, así el contenido sale del orden de tabulación.
 - `effects/menu.css`: la transición del menú de tema y del menú móvil.
+- Capas decorativas vacías, con `aria-hidden`, reservadas para fondos y gradientes: `.hero-backdrop` en el Hero y `.featured-backdrop` en el Proyecto destacado (vía la prop `decoration` de `Section`).
 
 Hay dos reglas que valen para todo efecto:
 
@@ -220,12 +221,6 @@ Opcional: en `portfolio-legacy`, desactivar Pages o archivar el repo.
 
 ## Pendiente
 
-Navbar y Experiencia están completas. Estas secciones ya tienen los datos conectados y les falta el diseño (buscar `TODO(` en `src/`):
-
-- **Hero:** layout final y estilo diferenciado del stack secundario. Falta decidir si se usa `hero.role`, que hoy no se muestra.
-- **Sobre mí**
-- **Proyecto destacado (Tecnoclima):** diseño, si el detalle va en desplegable, capturas y la URL de la demo.
-- **Trayectoria previa**
-- **Formación**
-- **Recomendaciones**
-- **Contacto** y **footer**
+- **Capturas de Tecnoclima:** hoy hay un placeholder (`TODO(featured)` en `FeaturedProject.js`). Van capturas reales y anonimizadas, exportadas al tamaño final en AVIF/WebP.
+- **Demo de Tecnoclima:** completar `featured.demo.url` en los dos archivos de mensajes. El botón aparece solo cuando hay URL.
+- **Efectos visuales:** transiciones nuevas y gradientes (fase 3), sobre las capas `*-backdrop` y el sistema de `src/animations/`.
