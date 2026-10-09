@@ -394,17 +394,21 @@
     "title": "Education",
     "items": [
       {
+        "id": "fullstack",
         "title": "Full Stack Developer",
         "institution": "soyHenry",
         "date": "April 2021"
       },
       {
+        "id": "teaching",
         "title": "Teacher training program for technicians and professionals",
         "institution": "Instituto Privado Ramallo",
         "date": "December 2018"
       },
       {
+        "id": "engineering",
         "title": "Industrial Engineering",
+        "institution": "Universidad Tecnológica Nacional",
         "date": "September 2011"
       }
     ]

@@ -211,3 +211,16 @@ export const ImageIcon = (props) => (
     <path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21" />
   </Icon>
 );
+
+export const GraduationIcon = (props) => (
+  <Icon {...props}>
+    <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+    <path d="M6 12v5c3 2 9 2 12 0v-5M22 10v6" />
+  </Icon>
+);
+
+export const BookIcon = (props) => (
+  <Icon {...props}>
+    <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2ZM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7Z" />
+  </Icon>
+);

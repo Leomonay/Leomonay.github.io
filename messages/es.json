@@ -394,17 +394,21 @@
     "title": "Formación",
     "items": [
       {
+        "id": "fullstack",
         "title": "Full Stack Developer",
         "institution": "soyHenry",
         "date": "abril 2021"
       },
       {
+        "id": "teaching",
         "title": "Tramo de formación pedagógica para técnicos y profesionales",
         "institution": "Instituto Privado Ramallo",
         "date": "diciembre 2018"
       },
       {
+        "id": "engineering",
         "title": "Ingeniería Industrial",
+        "institution": "Universidad Tecnológica Nacional",
         "date": "septiembre 2011"
       }
     ]
