@@ -1,0 +1,32 @@
+/*
+ * Gradient accents that tie the system together (primary → secondary):
+ * - the small bar above every section title;
+ * - the eyebrow's border (its opaque fill is unchanged, so its text contrast too).
+ * Plain CSS (unlayered), so it refines the @layer components base styles.
+ */
+
+.section-title::before {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+.eyebrow {
+  border-color: transparent;
+  background:
+    linear-gradient(
+        color-mix(in oklab, var(--color-primary) 10%, var(--color-base-100)),
+        color-mix(in oklab, var(--color-primary) 10%, var(--color-base-100))
+      )
+      padding-box,
+    linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--color-primary) 60%, transparent),
+        color-mix(in oklab, var(--color-secondary) 40%, transparent)
+      )
+      border-box;
+}
+
+@media (forced-colors: active) {
+  .eyebrow {
+    border-color: CanvasText;
+  }
+}
