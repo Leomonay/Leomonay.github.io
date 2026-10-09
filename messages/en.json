@@ -2,7 +2,8 @@
   "meta": {
     "title": "Leonardo Monay — Full stack developer",
     "description": "Full stack developer with a frontend focus. I build fast interfaces on top of well-modeled data.",
-    "ogLocale": "en_US"
+    "ogLocale": "en_US",
+    "ogImageAlt": "Leonardo Monay — Full stack developer with a frontend focus"
   },
   "root": {
     "linkLabel": "View in English"
@@ -41,5 +42,275 @@
       "dark": "Dark",
       "system": "System"
     }
+  },
+  "hero": {
+    "name": "Leonardo Monay",
+    "role": "Full stack developer",
+    "headline": "Full stack developer with a frontend focus. I build fast interfaces on top of well-modeled data.",
+    "location": "San Nicolás de los Arroyos, Buenos Aires, Argentina",
+    "stackLabel": "Main stack",
+    "stack": [
+      "React",
+      "Svelte/SvelteKit",
+      "TailwindCSS",
+      "React Query",
+      "Node.js",
+      "Express",
+      "MongoDB"
+    ],
+    "alsoLabel": "Also",
+    "also": ["Preact", "Storybook", "Java", "Selenium", "Appium"],
+    "linksLabel": "Profiles and contact",
+    "links": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    }
+  },
+  "about": {
+    "title": "About me",
+    "paragraphs": [
+      "I'm an industrial engineer and a teacher. Before I started programming, I spent about fifteen years in industry: power distribution, manufacturing, maintenance, logistics and production. That's where I learned how much it takes for information to be recorded correctly and on time.",
+      "As an administrator at Tecnoclima, I implemented the plant's equipment database and saw the problems with its management system firsthand. When I learned to code, I built the one that 160 people across 11 plants use today.",
+      "Today I work as a frontend developer on an education platform, where my two backgrounds come together: the technical one and the teaching one."
+    ]
+  },
+  "featured": {
+    "title": "Featured project",
+    "company": "Tecnoclima S.A.",
+    "role": "Freelance Full Stack Developer",
+    "period": "Jun 2021 – present",
+    "context": "Maintenance management system for industrial HVAC",
+    "techLabel": "Technologies",
+    "tech": ["MongoDB", "Express", "React", "Node.js"],
+    "highlights": [
+      "Designed and built, end to end, the system that replaced a local Access database; in production since 2023.",
+      "160 active users manage 2,900 units across 11 industrial plants, with more than 22,000 work orders logged since 2024.",
+      "Cut the time to log completed work from an average of 3 days (with delays of up to 2 weeks) to the same day."
+    ],
+    "details": [
+      {
+        "title": "The problem",
+        "text": "The company tracked its activity with Access forms on a network of three computers. Technicians filled in paper sheets that the tool-room supervisor then typed in; data took 3 days on average to be entered, and sometimes up to 2 weeks. The system had been designed by someone outside the business, and data entry was often a source of problems."
+      },
+      {
+        "title": "Why me",
+        "text": "I had worked for 5 years as general administrator at one of the plants, so I knew firsthand what needed to be recorded. I started the system as a personal project and, once I showed it, the company decided to adopt it."
+      },
+      {
+        "title": "What I built",
+        "text": "The data model, the API and every view; I also manage the deployment on a virtual machine. Role-based web access (supervisors plan and create work orders, technicians see their assignments and log progress, administrators monitor activity, managers review history and trends); work-order entry designed to require as little typing as possible; full history per unit; Excel import and export."
+      },
+      {
+        "title": "The outcome",
+        "text": "Technicians log their own work and the information is available the same day. Management uses the history and the trend in service requests to back budget decisions."
+      }
+    ],
+    "demo": {
+      "label": "View demo",
+      "url": ""
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "techLabel": "Technologies",
+    "toggle": {
+      "show": "Show details",
+      "hide": "Hide details",
+      "context": "for {company}"
+    },
+    "items": [
+      {
+        "id": "tecla-academy",
+        "company": "Tecla Academy",
+        "role": "Frontend Developer",
+        "period": "Oct 2023 – present",
+        "context": "Education platform with an AI tutor · ~20,000 users · expanding through partnerships with schools",
+        "tech": ["React", "TailwindCSS", "DaisyUI", "React Query"],
+        "highlights": [
+          "Adapted a desktop-first platform for mobile after metrics showed that most users accessed it from their phones.",
+          "Built the main screens from the designs: landing, home, content, settings, lessons, groups and reports.",
+          "Developed the hooks that extended the migration from Redux to React Query across the whole platform.",
+          "Review the visual and pedagogical quality of AI-generated teaching tools."
+        ],
+        "details": [
+          {
+            "title": "Mobile adaptation",
+            "text": "The platform had been designed for desktop, but metrics showed that most users came from their phones. I adapted the interface and improved transitions for touch devices."
+          },
+          {
+            "title": "Main screens",
+            "text": "When a designer joined the team, I implemented each screen with its components (sidebar, lesson navigation and assessments, group cards) and worked with the designer to adjust whatever wasn't technically feasible."
+          },
+          {
+            "title": "React Query",
+            "text": "Building on the Tech Lead's initial implementation, I developed the custom hooks to roll it out to the rest of the platform."
+          },
+          {
+            "title": "AI-generated tools",
+            "text": "I check that instructions are easy to understand, numbers are legible, colors aren't confusing, and nothing overlaps or overflows."
+          }
+        ]
+      },
+      {
+        "id": "latech",
+        "company": "LaTech",
+        "role": "Frontend Developer",
+        "period": "Mar 2023 – Oct 2023",
+        "context": "Development agency · Client: e-commerce",
+        "tech": ["Preact", "JavaScript", "ESLint", "Prettier", "Git hooks"],
+        "highlights": [
+          "Implemented component variants for A/B tests on an e-commerce product page.",
+          "Introduced git hooks to check formatting and linting before every push, which made code reviews simpler."
+        ],
+        "details": [
+          {
+            "title": "A/B tests",
+            "text": "Component variants triggered by URL flags or traffic source, built with Preact and DOM manipulation and integrated into an existing page."
+          },
+          {
+            "title": "Git hooks",
+            "text": "The project didn't enforce any formatting, so a small change came mixed with hundreds of reformatted lines. I proposed and implemented hooks with Prettier and ESLint; diffs started showing only what had actually changed, and the team adopted them."
+          }
+        ]
+      },
+      {
+        "id": "janis",
+        "company": "Janis",
+        "role": "Frontend Developer",
+        "period": "Dec 2022 – Feb 2023",
+        "tech": ["React", "Storybook", "Atomic Design"],
+        "highlights": [
+          "Built components and their Storybook documentation for an app whose views are generated dynamically from a JSON configuration (components, tables and filters)."
+        ]
+      },
+      {
+        "id": "kelp-digital",
+        "company": "Kelp Digital",
+        "role": "Frontend Developer",
+        "period": "Mar 2022 – Sep 2023",
+        "context": "Software startup · International team, working in English",
+        "url": "https://kelp.digital",
+        "tech": ["SvelteKit", "TailwindCSS", "DaisyUI", "pnpm", "GitLab", "Lighthouse"],
+        "highlights": [
+          "Built the <link>Kelp Digital</link> and Anagolay websites end to end from designs.",
+          "Kept a Lighthouse standard of 95+ (reaching 96–98) by optimizing images, loading and SEO.",
+          "Ensured compatibility across Chrome, Firefox, Edge and Safari while working in an international, English-speaking team."
+        ],
+        "details": [
+          {
+            "text": "I built complete pages in SvelteKit (structure, navigation, Tailwind configuration), plus SEO, Twitter Cards and image optimization, until they cleared the Lighthouse threshold of 95 the company required. I also contributed with SvelteKit to Macula, the product's application."
+          }
+        ]
+      },
+      {
+        "id": "globant",
+        "company": "Globant",
+        "role": "QA Automation Engineer (Trainee)",
+        "period": "May 2021 – Dec 2022",
+        "context": "Software consultancy · Client: international bank",
+        "tech": ["Java", "JUnit", "Selenium", "Appium", "Android Studio", "iOS"],
+        "highlights": [
+          "Created and maintained automated tests for an international bank's mobile app on Android and iOS, after training in test automation with Java and JUnit."
+        ]
+      },
+      {
+        "id": "tecla-coding-academy",
+        "company": "Tecla Coding Academy",
+        "role": "Project Review Tutor",
+        "period": "Jun 2021 – Feb 2022 and Apr 2023 – Aug 2023",
+        "tech": ["Teaching", "Code review"],
+        "highlights": [
+          "Assessed full stack projects by students in online courses, giving constructive feedback on their code and progress."
+        ]
+      }
+    ]
+  },
+  "career": {
+    "title": "Earlier career",
+    "items": [
+      {
+        "company": "Biocorba S.A.",
+        "role": "Biodiesel plant operator",
+        "period": "2020–2021",
+        "summary": "Process control through SCADA."
+      },
+      {
+        "company": "Secondary, technical and adult schools",
+        "role": "Teacher",
+        "period": "2019",
+        "summary": "Mathematics, Physics, Marketing and technical workshops."
+      },
+      {
+        "company": "Provser S.R.L. (at Ternium Siderar)",
+        "role": "Supervisor",
+        "period": "2018–2019",
+        "summary": "Led 8-person teams in raw-material supply."
+      },
+      {
+        "company": "Tecnoclima S.A. (at Ternium)",
+        "role": "In-house administrator",
+        "period": "2013–2018",
+        "summary": "Implemented the equipment database and labeling; budgets, maintenance plans and reports to management."
+      },
+      {
+        "company": "Fiplasto S.R.L.",
+        "role": "Quality analyst",
+        "period": "2011–2013",
+        "summary": "Monitored process variables; took part in a study that cut costs by shortening wood preheating by 40 seconds."
+      },
+      {
+        "company": "EDEN S.A.",
+        "role": "Technical support",
+        "period": "2006–2011",
+        "summary": "Maintained a georeferenced database, did functional testing of the internal work-order system, built pivot-table reports and trained technical offices."
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "items": [
+      {
+        "title": "Full Stack Developer",
+        "institution": "soyHenry",
+        "date": "April 2021"
+      },
+      {
+        "title": "Teacher training program for technicians and professionals",
+        "institution": "Instituto Privado Ramallo",
+        "date": "December 2018"
+      },
+      {
+        "title": "Industrial Engineering",
+        "date": "September 2011"
+      }
+    ]
+  },
+  "recommendations": {
+    "title": "Recommendations",
+    "items": [
+      {
+        "name": "Rodrigo Ayala",
+        "role": "Product Leader at Tecla Coding Academy",
+        "quote": "Leonardo is a very dedicated, focused and knowledgeable person. At a working and educational level, without a doubt, he is the person I would hire. He possesses many communication skills. It is a pleasure to work with him; he is always willing to help and collaborate with the work."
+      },
+      {
+        "name": "José Hidalgo",
+        "role": "Frontend developer, teamwork partner at soyHenry.com",
+        "quote": "Leo is an excellent teammate; he is reliable, organized and hard-working. He is a quick learner and has keen attention to detail, roles and tests, adapting to many new challenges along the way, as well as providing feedback to his colleagues. I really enjoyed working with Leo, and I'm sure he will be an amazing teammate in his future roles."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "text": "Have a project or an opportunity in mind? Reach out by email or on LinkedIn.",
+    "emailLabel": "Send me an email",
+    "locationLabel": "Location"
+  },
+  "footer": {
+    "builtWith": "Built with Next.js, Tailwind CSS and daisyUI."
+  },
+  "common": {
+    "opensInNewTab": "(opens in a new tab)"
   }
 }
