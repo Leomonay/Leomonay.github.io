@@ -92,6 +92,26 @@
       "I'm an industrial engineer and a teacher. Before I started programming, I spent about fifteen years in industry: power distribution, manufacturing, maintenance, logistics and production. That's where I learned how much it takes for information to be recorded correctly and on time.",
       "As an administrator at Tecnoclima, I implemented the plant's equipment database and saw the problems with its management system firsthand. When I learned to code, I built the one that 160 people across 11 plants use today.",
       "Today I work as a frontend developer on an education platform, where my two backgrounds come together: the technical one and the teaching one."
+    ],
+    "journeyTitle": "My path",
+    "journey": [
+      {
+        "id": "industry",
+        "title": "Industry",
+        "period": "2006–2021",
+        "text": "Power distribution, manufacturing, maintenance, logistics and production."
+      },
+      {
+        "id": "coding",
+        "title": "Coding",
+        "period": "2021",
+        "text": "Full stack training at soyHenry."
+      },
+      {
+        "id": "today",
+        "title": "Today",
+        "text": "Frontend development in edtech."
+      }
     ]
   },
   "featured": {

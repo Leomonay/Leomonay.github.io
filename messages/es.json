@@ -92,6 +92,26 @@
       "Soy ingeniero industrial y docente. Antes de programar trabajé unos quince años en la industria: distribución eléctrica, manufactura, mantenimiento, logística y producción. Ahí aprendí lo que cuesta que la información esté bien cargada y a tiempo.",
       "Como administrador en Tecnoclima implementé la base de datos de equipos de la planta y viví de cerca los problemas de su sistema de gestión. Cuando aprendí a programar, construí el que hoy usan 160 personas en 11 plantas.",
       "Hoy desarrollo frontend en una plataforma educativa, donde se juntan mis dos formaciones: la técnica y la docente."
+    ],
+    "journeyTitle": "Mi recorrido",
+    "journey": [
+      {
+        "id": "industry",
+        "title": "Industria",
+        "period": "2006–2021",
+        "text": "Distribución eléctrica, manufactura, mantenimiento, logística y producción."
+      },
+      {
+        "id": "coding",
+        "title": "Programación",
+        "period": "2021",
+        "text": "Formación full stack en soyHenry."
+      },
+      {
+        "id": "today",
+        "title": "Hoy",
+        "text": "Desarrollo frontend en edtech."
+      }
     ]
   },
   "featured": {
