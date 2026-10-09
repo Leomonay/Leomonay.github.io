@@ -1,1 +1,121 @@
 @import 'tailwindcss';
+
+/* Built-in daisyUI themes are disabled: only the two custom green themes below ship. */
+@plugin 'daisyui' {
+  themes: false;
+}
+
+/*
+ * Light theme. `default: true` makes it the fallback when no data-theme is set
+ * (e.g. JavaScript disabled), and `prefersdark` on the dark theme covers the OS
+ * preference in that same no-JS case.
+ * Contrast is checked with `npm run check:contrast` (WCAG AA).
+ */
+@plugin 'daisyui/theme' {
+  name: 'leaf';
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: oklch(98.6% 0.008 155);
+  --color-base-200: oklch(95.8% 0.016 155);
+  --color-base-300: oklch(91.5% 0.024 155);
+  --color-base-content: oklch(24% 0.03 162);
+  --color-primary: oklch(45% 0.105 158);
+  --color-primary-content: oklch(98.6% 0.008 155);
+  --color-secondary: oklch(47% 0.075 190);
+  --color-secondary-content: oklch(98.6% 0.008 155);
+  --color-accent: oklch(46% 0.12 135);
+  --color-accent-content: oklch(98.6% 0.008 155);
+  --color-neutral: oklch(29% 0.03 165);
+  --color-neutral-content: oklch(96% 0.012 155);
+  --color-info: oklch(48% 0.12 240);
+  --color-info-content: oklch(98.6% 0.008 155);
+  --color-success: oklch(47% 0.11 150);
+  --color-success-content: oklch(98.6% 0.008 155);
+  --color-warning: oklch(76% 0.15 80);
+  --color-warning-content: oklch(24% 0.03 70);
+  --color-error: oklch(51% 0.18 27);
+  --color-error-content: oklch(98.6% 0.008 155);
+
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* Dark theme: deep forest background with mint accents. */
+@plugin 'daisyui/theme' {
+  name: 'forest';
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: oklch(19% 0.022 165);
+  --color-base-200: oklch(16% 0.02 165);
+  --color-base-300: oklch(25% 0.026 165);
+  --color-base-content: oklch(92% 0.02 155);
+  --color-primary: oklch(80% 0.13 160);
+  --color-primary-content: oklch(20% 0.04 162);
+  --color-secondary: oklch(78% 0.08 188);
+  --color-secondary-content: oklch(20% 0.04 190);
+  --color-accent: oklch(86% 0.14 128);
+  --color-accent-content: oklch(22% 0.05 130);
+  --color-neutral: oklch(30% 0.03 165);
+  --color-neutral-content: oklch(92% 0.02 155);
+  --color-info: oklch(76% 0.11 240);
+  --color-info-content: oklch(20% 0.04 240);
+  --color-success: oklch(78% 0.13 150);
+  --color-success-content: oklch(20% 0.04 150);
+  --color-warning: oklch(82% 0.14 80);
+  --color-warning-content: oklch(22% 0.04 70);
+  --color-error: oklch(72% 0.16 25);
+  --color-error-content: oklch(20% 0.04 25);
+
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* Fonts are self-hosted by next/font, which exposes them as CSS variables on <html>. */
+@theme inline {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Leave room for the sticky navbar when jumping to #section anchors. */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-base-100 font-sans text-base-content antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight text-balance;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}

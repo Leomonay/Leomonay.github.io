@@ -1,5 +1,7 @@
 import { getTranslations } from 'next-intl/server';
+import HeadScripts from '@/components/HeadScripts';
 import { routing } from '@/i18n/routing';
+import { fontVariables } from '@/lib/fonts';
 import { localePath } from '@/lib/site';
 import '@/styles/globals.css';
 
@@ -17,7 +19,11 @@ export default async function GlobalNotFound() {
   );
 
   return (
-    <html lang={routing.defaultLocale}>
+    // suppressHydrationWarning: see [locale]/layout.js (theme script sets data-theme early).
+    <html lang={routing.defaultLocale} className={fontVariables} suppressHydrationWarning>
+      <head>
+        <HeadScripts />
+      </head>
       <body>
         <main className="grid min-h-dvh place-items-center p-6">
           <div className="flex flex-col gap-10 text-center">

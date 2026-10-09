@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "check:contrast": "node scripts/check-contrast.mjs"
   },
   "dependencies": {
     "next": "^16.4.0",
