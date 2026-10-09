@@ -1,0 +1,13 @@
+/*
+ * Theme switch crossfade (View Transitions API, started by ThemeSwitcher).
+ * The default root transition is already a crossfade; this only makes it short and
+ * soft. Browsers without the API, and reduced motion, switch instantly (JS skips it).
+ */
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 250ms;
+    animation-timing-function: ease-out;
+  }
+}

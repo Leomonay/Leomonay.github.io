@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react';
+import { flushSync } from 'react-dom';
 import { CheckIcon, MonitorIcon, MoonIcon, SunIcon } from '@/components/icons';
 import { button } from '@/components/ui/Button';
 import { DARK_QUERY, THEME_PREFERENCES } from '@/lib/theme';
@@ -74,9 +75,29 @@ export default function ThemeSwitcher({ labels }) {
   };
 
   const select = (value) => {
-    setThemePreference(value);
-    setAnnouncement(labels.changed[value]);
-    closeMenu();
+    const apply = () => {
+      setThemePreference(value);
+      setAnnouncement(labels.changed[value]);
+      setOpen(false);
+    };
+
+    // Crossfade between themes (effects/theme-transition.css) where the View
+    // Transitions API exists and motion is welcome; otherwise switch instantly.
+    // flushSync renders the new icon and the closed menu inside the callback, so
+    // they're part of the "after" snapshot instead of popping in afterwards.
+    const animate =
+      document.startViewTransition &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (animate) {
+      const transition = document.startViewTransition(() => flushSync(apply));
+      // A quick second pick skips the running transition, which rejects `ready`
+      // with an AbortError. That's expected (the theme still applies), not an error.
+      transition.ready.catch(() => {});
+    } else {
+      apply();
+    }
+
+    triggerRef.current?.focus();
   };
 
   const onTriggerKeyDown = (event) => {

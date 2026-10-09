@@ -28,6 +28,7 @@
 @import './effects/gradient-border.css';
 @import './effects/separators.css';
 @import './effects/spotlight.css';
+@import './effects/theme-transition.css';
 
 @theme {
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
