@@ -12,7 +12,8 @@
     "serve": "npx serve@14 out -l 3000",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "^16.4.0",
