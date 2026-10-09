@@ -1,0 +1,48 @@
+/*
+ * Gradient border for cards (Card's `gradientBorder` variant).
+ *
+ * A ::before layer covers the card's 1px border with a primary → secondary gradient;
+ * the mask keeps only that 1px ring (content-box "minus" border-box). At rest it's
+ * faint over the regular border; on hover / keyboard focus inside it fades in.
+ * Only `opacity` transitions, so hovering doesn't repaint the border itself.
+ * A short fade is allowed under reduced motion (no movement involved).
+ */
+
+.card-gradient-border {
+  position: relative;
+}
+
+.card-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    color-mix(in oklab, var(--color-secondary) 60%, transparent) 50%,
+    var(--color-primary)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 250ms ease-out;
+}
+
+.card-gradient-border:hover::before,
+.card-gradient-border:focus-within::before {
+  opacity: 1;
+}
+
+@media (forced-colors: active) {
+  .card-gradient-border::before {
+    display: none;
+  }
+}

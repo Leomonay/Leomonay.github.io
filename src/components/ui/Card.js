@@ -20,6 +20,10 @@ export const card = tv({
       md: {},
       sm: { root: 'sm:p-5', title: 'text-lg' },
     },
+    // Gradient ring that fades in on hover / focus (src/animations/effects/gradient-border.css).
+    gradientBorder: {
+      true: { root: 'card-gradient-border' },
+    },
     // Hover lift for cards. The motion itself is disabled under prefers-reduced-motion.
     interactive: {
       true: {
@@ -31,6 +35,7 @@ export const card = tv({
   defaultVariants: {
     tone: 'plain',
     size: 'md',
+    gradientBorder: false,
     interactive: false,
   },
 });
@@ -48,12 +53,13 @@ export default function Card({
   icon: Icon,
   tone,
   size,
+  gradientBorder,
   interactive,
   className,
   children,
   ...props
 }) {
-  const s = card({ tone, size, interactive });
+  const s = card({ tone, size, gradientBorder, interactive });
 
   return (
     <Root className={s.root({ className: [interactive && 'group', className] })} {...props}>

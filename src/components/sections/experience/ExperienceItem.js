@@ -34,6 +34,7 @@ export default function ExperienceItem({ item, index, t, newTabLabel }) {
       <Card
         as="article"
         interactive
+        gradientBorder
         title={t(`${key}.company`)}
         meta={`${t(`${key}.role`)} · ${t(`${key}.period`)}`}
       >

@@ -20,6 +20,7 @@ export default async function Education() {
             key={id}
             as="li"
             size="sm"
+            gradientBorder
             icon={ICONS[id]}
             title={t(`items.${i}.title`)}
             meta={
