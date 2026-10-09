@@ -1,4 +1,11 @@
-/* Scroll-reveal effects: fade, fade-up, scale. */
+/*
+ * Scroll-reveal effects: fade, fade-up, fade-left, fade-right, scale.
+ * Stagger with style={revealDelay(i)} (src/animations/reveal.js).
+ */
+
+@theme {
+  --reveal-distance: 1rem;
+}
 
 @media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
   [data-reveal] {
@@ -13,8 +20,22 @@
     opacity: 0;
   }
 
-  [data-reveal='fade-up']:not([data-revealed]) {
-    translate: 0 1.5rem;
+  /* On phones the side variants fall back to fade-up: a horizontal offset next to
+     the screen edge risks a horizontal scrollbar. */
+  [data-reveal='fade-up']:not([data-revealed]),
+  [data-reveal='fade-left']:not([data-revealed]),
+  [data-reveal='fade-right']:not([data-revealed]) {
+    translate: 0 var(--reveal-distance);
+  }
+
+  @media (min-width: 48rem) {
+    [data-reveal='fade-left']:not([data-revealed]) {
+      translate: calc(var(--reveal-distance) * -1) 0;
+    }
+
+    [data-reveal='fade-right']:not([data-revealed]) {
+      translate: var(--reveal-distance) 0;
+    }
   }
 
   [data-reveal='scale']:not([data-revealed]) {

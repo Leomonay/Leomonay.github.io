@@ -4,8 +4,8 @@
  *
  * Conventions
  * - Scroll reveal: add `data-reveal="<effect>"` to any element. RevealObserver sets
- *   `data-revealed` when it enters the viewport. Optional stagger:
- *   style={{ '--reveal-delay': '120ms' }}.
+ *   `data-revealed` when it enters the viewport. Stagger items with
+ *   style={revealDelay(i)} from ./reveal.js (uniform step, capped).
  * - Hidden "before" states only apply when JS can reveal them
  *   (`@media (scripting: enabled)`), so content never stays invisible without JS.
  * - Everything is wrapped in `prefers-reduced-motion: no-preference`, so users who
@@ -30,5 +30,5 @@
 
 @theme {
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --duration-reveal: 700ms;
+  --duration-reveal: 600ms;
 }

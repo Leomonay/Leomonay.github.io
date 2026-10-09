@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { revealDelay } from '@/animations/reveal';
 import { QuoteIcon } from '@/components/icons';
 import { card } from '@/components/ui/Card';
 import Section from '@/components/ui/Section';
@@ -18,7 +19,7 @@ export default async function Recommendations() {
     <Section id={SECTIONS.recommendations} title={t('title')}>
       <ul className="grid gap-4 md:grid-cols-2 md:gap-6">
         {items.map((_, i) => (
-          <li key={i} data-reveal="fade-up" style={{ '--reveal-delay': `${i * 100}ms` }}>
+          <li key={i} data-reveal="fade-up" style={revealDelay(i)}>
             <figure className={s.root({ className: 'flex h-full flex-col gap-4' })}>
               <QuoteIcon className="size-8 text-primary/40" />
               <blockquote className="text-base-content">

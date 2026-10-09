@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { revealDelay } from '@/animations/reveal';
 import { BookIcon, CodeIcon, GraduationIcon } from '@/components/icons';
 import Card from '@/components/ui/Card';
 import Section from '@/components/ui/Section';
@@ -30,7 +31,7 @@ export default async function Education() {
               </>
             }
             data-reveal="fade-up"
-            style={{ '--reveal-delay': `${i * 80}ms` }}
+            style={revealDelay(i)}
           />
         ))}
       </ul>

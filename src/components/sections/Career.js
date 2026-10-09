@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { revealDelay } from '@/animations/reveal';
 import Section from '@/components/ui/Section';
 import { SECTIONS } from '@/lib/sections';
 
@@ -18,7 +19,7 @@ export default async function Career() {
           <li
             key={i}
             data-reveal="fade-up"
-            style={{ '--reveal-delay': `${i * 60}ms` }}
+            style={revealDelay(i)}
             className="rail-item grid gap-x-6 gap-y-0.5 sm:grid-cols-[6.5rem_1fr]"
           >
             <p className="text-sm font-semibold text-primary tabular-nums sm:pt-0.5">

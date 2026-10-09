@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { revealDelay } from '@/animations/reveal';
 import { CodeIcon, FactoryIcon, MonitorIcon } from '@/components/icons';
 import Section from '@/components/ui/Section';
 import { SECTIONS } from '@/lib/sections';
@@ -23,7 +24,7 @@ export default async function About() {
             <p
               key={i}
               data-reveal="fade-up"
-              style={{ '--reveal-delay': `${i * 80}ms` }}
+              style={revealDelay(i)}
               className={i === 0 ? 'text-base-content' : 'text-base-content/75'}
             >
               {t(`paragraphs.${i}`)}
@@ -31,7 +32,7 @@ export default async function About() {
           ))}
         </div>
 
-        <div data-reveal="fade-up" style={{ '--reveal-delay': '120ms' }}>
+        <div data-reveal="fade-up" style={revealDelay(1)}>
           <h3
             id="about-journey"
             className="mb-6 text-sm font-semibold tracking-wide text-primary uppercase"

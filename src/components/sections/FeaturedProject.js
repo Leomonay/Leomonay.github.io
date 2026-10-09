@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { revealDelay } from '@/animations/reveal';
 import {
   ArrowRightIcon,
   ChartIcon,
@@ -90,17 +91,23 @@ export default async function FeaturedProject() {
                 value={t(`metrics.${i}.value`)}
                 label={t(`metrics.${i}.label`)}
                 data-reveal="fade-up"
-                style={{ '--reveal-delay': `${i * 80}ms` }}
+                style={revealDelay(i)}
               />
             ))}
           </dl>
         </div>
 
         {/* Before → after */}
-        <div data-reveal="fade-up">
-          <h4 className={subheading}>{t('comparison.title')}</h4>
+        <div>
+          <h4 className={subheading} data-reveal="fade-up">
+            {t('comparison.title')}
+          </h4>
           <div className="grid items-stretch gap-3 md:grid-cols-[1fr_auto_1fr] md:gap-4">
-            <div className="rounded-box border border-base-300 bg-base-100 p-5">
+            {/* "Before" comes in from the left, "after" from the right (fade-up on phones). */}
+            <div
+              data-reveal="fade-left"
+              className="rounded-box border border-base-300 bg-base-100 p-5"
+            >
               <h5 className="mb-4 text-sm font-semibold tracking-wide text-base-content/75 uppercase">
                 {t('comparison.before.title')}
               </h5>
@@ -114,11 +121,20 @@ export default async function FeaturedProject() {
               />
             </div>
 
-            <span aria-hidden="true" className="grid place-items-center text-primary">
+            <span
+              aria-hidden="true"
+              data-reveal="fade"
+              style={revealDelay(1)}
+              className="grid place-items-center text-primary"
+            >
               <ArrowRightIcon className="size-6 rotate-90 md:rotate-0" />
             </span>
 
-            <div className="rounded-box border-2 border-primary bg-base-100 p-5">
+            <div
+              data-reveal="fade-right"
+              style={revealDelay(2)}
+              className="rounded-box border-2 border-primary bg-base-100 p-5"
+            >
               <h5 className="mb-4 text-sm font-semibold tracking-wide text-primary uppercase">
                 {t('comparison.after.title')}
               </h5>
@@ -146,7 +162,7 @@ export default async function FeaturedProject() {
                 <li
                   key={id}
                   data-reveal="fade-up"
-                  style={{ '--reveal-delay': `${i * 80}ms` }}
+                  style={revealDelay(i)}
                   className="flex gap-4 rounded-box border border-base-300 bg-base-100 p-5 lg:flex-col lg:gap-3"
                 >
                   <span
@@ -180,7 +196,7 @@ export default async function FeaturedProject() {
 
           <figure
             data-reveal="fade-up"
-            style={{ '--reveal-delay': '120ms' }}
+            style={revealDelay(1)}
             className="relative flex flex-col gap-3 rounded-box border-l-4 border-primary bg-base-100 p-6"
           >
             <QuoteIcon className="size-8 text-primary/40" />
