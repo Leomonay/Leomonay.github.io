@@ -308,6 +308,7 @@
     "locationLabel": "Location"
   },
   "footer": {
+    "copyright": "© {year} Leonardo Monay",
     "builtWith": "Built with Next.js, Tailwind CSS and daisyUI."
   },
   "common": {
