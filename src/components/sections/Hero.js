@@ -46,7 +46,7 @@ export default async function Hero() {
         <p className="eyebrow">{t('role')}</p>
 
         <div className="flex flex-col gap-4">
-          <h1 id="hero-title" className="text-5xl font-bold sm:text-7xl">
+          <h1 id="hero-title" className="text-gradient text-5xl font-bold sm:text-7xl">
             {t('name')}
           </h1>
           <p className="max-w-2xl text-xl text-base-content/75 sm:text-2xl">{t('headline')}</p>

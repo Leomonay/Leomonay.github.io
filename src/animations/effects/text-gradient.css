@@ -1,0 +1,31 @@
+/*
+ * Gradient text for the hero name: base-content → primary, from theme variables.
+ * Both stops are checked over the aurora in scripts/check-contrast.mjs
+ * ("base-content on aurora", "primary on aurora"), so every point of the gradient
+ * keeps AA. Solid color when background-clip:text isn't supported or in forced-colors
+ * (Windows High Contrast), where background images are dropped.
+ */
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .text-gradient {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-base-content) 30%,
+      var(--color-primary) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* The gradient only paints inside the box; tight heading line-heights leave
+       descenders (the "y") outside it. Extend the box without moving the layout. */
+    padding-block-end: 0.12em;
+    margin-block-end: -0.12em;
+  }
+}
+
+@media (forced-colors: active) {
+  .text-gradient {
+    background: none;
+    color: CanvasText;
+  }
+}

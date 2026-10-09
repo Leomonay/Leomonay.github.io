@@ -87,9 +87,9 @@ function auroraPairs(themeName, aurora) {
     ],
   };
   return [
-    ['base-content', bg, 4.5], // name, labels
+    ['base-content', bg, 4.5], // labels; also the start of the name's gradient
     ['base-content', bg, 4.5, 0.75], // headline, quick facts
-    ['primary', bg, 4.5], // outline button, icons
+    ['primary', bg, 4.5], // outline button, icons; also the end of the name's gradient
     ['primary', eyebrowBg, 4.5], // role eyebrow
   ];
 }
