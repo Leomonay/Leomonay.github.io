@@ -1,9 +1,18 @@
 @import 'tailwindcss';
 @import '../animations/animations.css';
 
-/* Built-in daisyUI themes are disabled: only the two custom green themes below ship. */
+/*
+ * Built-in daisyUI themes are disabled: only the two custom green themes below ship.
+ * `include` whitelists the daisyUI parts the site uses. Without it, Tailwind's content
+ * scan emits any daisyUI component whose name appears as a word anywhere in the project
+ * (role="menu", select(), "toggle" in messages, "timeline" in docs…), ~80 KB of unused
+ * render-blocking CSS. Add a name here before using a new daisyUI component.
+ */
 @plugin 'daisyui' {
   themes: false;
+  include:
+    button, join, link, radius, properties, rootcolor, rootscrollgutter, rootscrolllock, scrollbar,
+    svg;
 }
 
 /*
