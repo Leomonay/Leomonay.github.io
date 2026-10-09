@@ -1,5 +1,4 @@
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages, getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import RevealObserver from '@/animations/RevealObserver';
 import HeadScripts from '@/components/HeadScripts';
 import { routing } from '@/i18n/routing';
@@ -62,17 +61,14 @@ export async function generateMetadata() {
   };
 }
 
-// Namespaces used by Client Components (useTranslations in a 'use client' file).
-// Only these are serialized into the page; everything else is rendered on the server
-// and never shipped as JSON. Add a namespace here if a new client component needs it.
-const CLIENT_NAMESPACES = ['theme'];
-
 // [locale] is a root layout (there is no app/layout.js above it), so it owns <html>
 // and can set the correct `lang` per language.
+//
+// There is no NextIntlClientProvider: Client Components get their texts as props from
+// their Server Component parent. That keeps next-intl's runtime (and a JSON copy of the
+// messages) out of the browser. See README → "Textos en un Client Component".
 export default async function LocaleLayout({ children }) {
   const locale = await getLocale();
-  const messages = await getMessages();
-  const clientMessages = Object.fromEntries(CLIENT_NAMESPACES.map((ns) => [ns, messages[ns]]));
 
   return (
     // suppressHydrationWarning: the inline theme script sets `data-theme` on <html> before
@@ -83,7 +79,7 @@ export default async function LocaleLayout({ children }) {
         <HeadScripts />
       </head>
       <body>
-        <NextIntlClientProvider messages={clientMessages}>{children}</NextIntlClientProvider>
+        {children}
         <RevealObserver />
       </body>
     </html>

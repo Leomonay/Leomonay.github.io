@@ -1,15 +1,26 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { NAV_SECTIONS, SECTIONS } from '@/lib/sections';
+import { THEME_PREFERENCES } from '@/lib/theme';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
 import ThemeSwitcher from './ThemeSwitcher';
 
-// Server Component: renders the static markup and passes translated strings down, so only
-// the three interactive pieces (switchers and mobile menu) ship JavaScript.
+// Server Component: renders the static markup and passes translated strings down as props,
+// so only the three interactive pieces (switchers and mobile menu) ship JavaScript, and
+// none of them needs next-intl on the client.
 export default async function Navbar() {
   const locale = await getLocale();
   const t = await getTranslations('nav');
+
+  const tTheme = await getTranslations('theme');
+  const byPreference = (fn) => Object.fromEntries(THEME_PREFERENCES.map((p) => [p, fn(p)]));
+  const themeLabels = {
+    menu: tTheme('label'),
+    options: byPreference((p) => tTheme(`options.${p}`)),
+    trigger: byPreference((p) => tTheme('trigger', { theme: tTheme(`options.${p}`) })),
+    changed: byPreference((p) => tTheme('changed', { theme: tTheme(`options.${p}`) })),
+  };
 
   const links = NAV_SECTIONS.map((id) => ({ id, label: t(`sections.${id}`) }));
 
@@ -55,7 +66,7 @@ export default async function Navbar() {
 
         <div className="flex items-center gap-1 sm:gap-2">
           <LanguageSwitcher locale={locale} label={t('language')} languages={languages} />
-          <ThemeSwitcher />
+          <ThemeSwitcher labels={themeLabels} />
           <MobileMenu
             links={links}
             navLabel={t('label')}

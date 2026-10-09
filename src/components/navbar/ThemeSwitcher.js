@@ -1,6 +1,5 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react';
 import { CheckIcon, MonitorIcon, MoonIcon, SunIcon } from '@/components/icons';
 import { button } from '@/components/ui/Button';
@@ -25,9 +24,12 @@ const ICONS = { light: SunIcon, dark: MoonIcon, system: MonitorIcon };
  *   is active. A polite live region also announces the change.
  * - Keyboard: Enter/Space/↓ open on the first checked item, ↑/↓/Home/End move,
  *   Escape closes and returns focus, Tab closes.
+ *
+ * Texts arrive already translated from the server (Navbar), one per option, so this
+ * client component doesn't need next-intl's runtime in the browser bundle.
+ * `labels` = { menu, options: {light, dark, system}, trigger: {…}, changed: {…} }.
  */
-export default function ThemeSwitcher() {
-  const t = useTranslations('theme');
+export default function ThemeSwitcher({ labels }) {
   const preference = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const [open, setOpen] = useState(false);
   const [announcement, setAnnouncement] = useState('');
@@ -73,7 +75,7 @@ export default function ThemeSwitcher() {
 
   const select = (value) => {
     setThemePreference(value);
-    setAnnouncement(t('changed', { theme: t(`options.${value}`) }));
+    setAnnouncement(labels.changed[value]);
     closeMenu();
   };
 
@@ -105,7 +107,6 @@ export default function ThemeSwitcher() {
   };
 
   const CurrentIcon = ICONS[preference];
-  const currentLabel = t('options.' + preference);
 
   return (
     <div ref={rootRef} className="relative">
@@ -116,7 +117,7 @@ export default function ThemeSwitcher() {
         aria-haspopup="menu"
         aria-expanded={open}
         aria-controls={menuId}
-        aria-label={t('trigger', { theme: currentLabel })}
+        aria-label={labels.trigger[preference]}
         onClick={() => (open ? closeMenu() : openMenu())}
         onKeyDown={onTriggerKeyDown}
       >
@@ -126,7 +127,7 @@ export default function ThemeSwitcher() {
       <ul
         id={menuId}
         role="menu"
-        aria-label={t('label')}
+        aria-label={labels.menu}
         data-open={open || undefined}
         onKeyDown={onMenuKeyDown}
         className="menu-popover absolute right-0 z-50 mt-2 w-44 rounded-box border border-base-300 bg-base-100 p-1 shadow-lg"
@@ -146,7 +147,7 @@ export default function ThemeSwitcher() {
                 className="flex w-full items-center gap-3 rounded-field px-3 py-2 text-left text-sm text-base-content hover:bg-base-200 focus-visible:bg-base-200 aria-checked:font-semibold aria-checked:text-primary"
               >
                 <Icon className="size-4" />
-                <span className="flex-1">{t(`options.${value}`)}</span>
+                <span className="flex-1">{labels.options[value]}</span>
                 {checked && <CheckIcon className="size-4" />}
               </button>
             </li>

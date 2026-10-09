@@ -167,9 +167,9 @@ Agregá un objeto al array `experience.items`, **en los dos archivos y en la mis
 4. Usá `.tag`, `.section-lead`, `Card`, `Button` y `data-reveal` antes de inventar estilos nuevos.
 5. Si necesitás interactividad, aislala en un Client Component chico (como `Disclosure`).
 
-### Usar traducciones en un Client Component
+### Textos en un Client Component
 
-Agregá el namespace a `CLIENT_NAMESPACES` en `src/app/[locale]/layout.js`. Solo esos namespaces se serializan en la página: el resto del texto se renderiza en el servidor y no viaja dos veces.
+No hay `NextIntlClientProvider`. Los Client Components reciben sus textos ya traducidos como props desde el Server Component padre: por ejemplo, `Navbar` le arma a `ThemeSwitcher` un objeto con las etiquetas de cada opción. Así el runtime de next-intl (≈12 KB con gzip) y una copia en JSON de los mensajes no viajan al navegador. Si alguna vez un componente necesita `useTranslations` en el cliente, hay que volver a envolver `children` con el provider en `src/app/[locale]/layout.js`, pasándole solo los namespaces necesarios.
 
 ### Usar un componente nuevo de daisyUI
 
@@ -196,7 +196,7 @@ Completá `featured.demo.url` en los dos archivos de mensajes. El botón aparece
 - **`next/root-params`:** forma actual de next-intl 4 para renderizado estático. `setRequestLocale` y `requestLocale` quedaron deprecados.
 - **Imagen OG como route handler** (`[locale]/og.png/route.js`) y no con la convención `opengraph-image`: esa convención solo acepta un `alt` fijo, y su variante dinámica (`generateImageMetadata`) no recibe `[locale]` en una exportación estática. Así cada idioma tiene su imagen y su `alt` traducido.
 - **Server Components por defecto:** la navbar, las secciones y las tarjetas son HTML estático, y el JS se limita a lo interactivo.
-- **Contenido duplicado en el HTML:** Next serializa el árbol RSC además del HTML. Para no sumar una tercera copia, solo se pasan al cliente los mensajes que usa un Client Component (`CLIENT_NAMESPACES`).
+- **Sin next-intl en el cliente:** Next ya serializa el árbol RSC además del HTML. Para no sumar el runtime de next-intl ni una tercera copia del texto, los Client Components reciben sus textos como props.
 - **ESLint 9 y no 10:** `eslint-config-next@16` trae plugins (`react`, `import`, `jsx-a11y`) que todavía no soportan ESLint 10.
 - **Contenido del desplegable en el HTML:** los detalles se renderizan siempre y se ocultan con CSS. Así están disponibles para SEO y, sin JS, quedan visibles.
 - **`.gitattributes` con `eol=lf`:** Prettier usa LF y Windows convierte a CRLF por defecto. Sin esto, cada commit en Windows reformatearía todo.
