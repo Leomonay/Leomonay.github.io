@@ -15,6 +15,10 @@
   --aurora-a: color-mix(in oklab, var(--color-primary) 12%, transparent);
   --aurora-b: color-mix(in oklab, var(--color-secondary) 10%, transparent);
   overflow: hidden;
+  /* Fade the lights out before the hero's bottom edge, where overflow:hidden would
+     otherwise cut them into a visible straight line. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent);
 }
 
 [data-theme='forest'] .hero-backdrop {
