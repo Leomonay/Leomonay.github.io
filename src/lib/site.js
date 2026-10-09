@@ -15,3 +15,6 @@ export const PROFILE = {
   linkedin: 'https://www.linkedin.com/in/leomonay/',
   email: 'leonardomonay@gmail.com',
 };
+
+// This site's repository (its final name after the GitHub Pages rename; see README → Publicación).
+export const SOURCE_URL = 'https://github.com/Leomonay/leomonay.github.io';

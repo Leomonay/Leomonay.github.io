@@ -430,13 +430,15 @@
   },
   "contact": {
     "title": "Contacto",
+    "closing": "Construyamos juntos",
     "text": "¿Tenés un proyecto o una propuesta? Escribime por mail o por LinkedIn.",
     "emailLabel": "Escribime un mail",
     "locationLabel": "Ubicación"
   },
   "footer": {
     "copyright": "© {year} Leonardo Monay",
-    "builtWith": "Hecho con Next.js, Tailwind CSS y daisyUI."
+    "builtWith": "Hecho con Next.js, Tailwind CSS y daisyUI.",
+    "source": "Ver el código de este sitio"
   },
   "common": {
     "opensInNewTab": "(se abre en una pestaña nueva)"

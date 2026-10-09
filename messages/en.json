@@ -430,13 +430,15 @@
   },
   "contact": {
     "title": "Contact",
+    "closing": "Let's build something together.",
     "text": "Have a project or an opportunity in mind? Reach out by email or on LinkedIn.",
     "emailLabel": "Send me an email",
     "locationLabel": "Location"
   },
   "footer": {
     "copyright": "© {year} Leonardo Monay",
-    "builtWith": "Built with Next.js, Tailwind CSS and daisyUI."
+    "builtWith": "Built with Next.js, Tailwind CSS and daisyUI.",
+    "source": "View this site's source code"
   },
   "common": {
     "opensInNewTab": "(opens in a new tab)"
