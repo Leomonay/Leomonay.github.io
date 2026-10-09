@@ -119,3 +119,38 @@
     }
   }
 }
+
+/*
+ * Reusable design classes composed with @apply.
+ * Rule of thumb: plain repeated *styles* live here; components with *props*
+ * (Button, Card) use tailwind-variants in src/components/ui.
+ */
+@layer components {
+  /* Horizontal page container, mobile first. */
+  .container-page {
+    @apply mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Vertical rhythm shared by every <section>. */
+  .section {
+    @apply py-16 sm:py-24;
+  }
+
+  .section-title {
+    @apply mb-8 text-3xl font-bold text-base-content sm:text-4xl;
+  }
+
+  /* Small accent line above the section title. */
+  .section-title::before {
+    @apply mb-3 block h-1 w-10 rounded-full bg-primary content-[''];
+  }
+
+  .section-lead {
+    @apply max-w-prose text-lg text-base-content/75;
+  }
+
+  /* Technology / skill chip. */
+  .tag {
+    @apply inline-flex items-center rounded-full border border-base-300 bg-base-200 px-3 py-1 text-sm font-medium text-base-content;
+  }
+}

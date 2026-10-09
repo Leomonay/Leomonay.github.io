@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import Button from '@/components/ui/Button';
 import { routing } from '@/i18n/routing';
 import { localePath, SITE_URL } from '@/lib/site';
 
@@ -29,14 +30,9 @@ export default async function RootPage() {
       <ul className="flex flex-col gap-4 text-center sm:flex-row">
         {links.map(({ locale, label }) => (
           <li key={locale}>
-            <a
-              className="btn btn-primary"
-              href={localePath(locale)}
-              hrefLang={locale}
-              lang={locale}
-            >
+            <Button href={localePath(locale)} hrefLang={locale} lang={locale}>
               {label}
-            </a>
+            </Button>
           </li>
         ))}
       </ul>
