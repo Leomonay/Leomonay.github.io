@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Leonardo Monay — Full stack developer",
-    "description": "Full stack developer with a frontend focus. I build fast interfaces on top of well-modeled data.",
+    "description": "Full stack JavaScript developer. I build fast interfaces on top of well-modeled data.",
     "ogLocale": "en_US",
-    "ogImageAlt": "Leonardo Monay — Full stack developer with a frontend focus"
+    "ogImageAlt": "Leonardo Monay — Full stack JavaScript developer"
   },
   "root": {
     "linkLabel": "View in English"
@@ -46,7 +46,7 @@
   "hero": {
     "name": "Leonardo Monay",
     "role": "Full Stack JavaScript Developer",
-    "headline": "Full stack developer with a frontend focus. I build fast interfaces on top of well-modeled data.",
+    "headline": "Full stack JavaScript developer. I build fast interfaces on top of well-modeled data.",
     "cta": {
       "featured": "View featured project",
       "contact": "Contact"
@@ -131,7 +131,7 @@
       },
       {
         "value": "2,900",
-        "label": "units"
+        "label": "HVAC units"
       },
       {
         "value": "11",

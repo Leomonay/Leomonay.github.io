@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Leonardo Monay — Desarrollador full stack",
-    "description": "Desarrollador full stack con foco en frontend. Construyo interfaces rápidas sobre datos bien modelados.",
+    "description": "Desarrollador full stack JavaScript. Construyo interfaces rápidas sobre datos bien modelados.",
     "ogLocale": "es_AR",
-    "ogImageAlt": "Leonardo Monay — Desarrollador full stack con foco en frontend"
+    "ogImageAlt": "Leonardo Monay — Desarrollador full stack JavaScript"
   },
   "root": {
     "linkLabel": "Ver en español"
@@ -46,7 +46,7 @@
   "hero": {
     "name": "Leonardo Monay",
     "role": "Full Stack JavaScript Developer",
-    "headline": "Desarrollador full stack con foco en frontend. Construyo interfaces rápidas sobre datos bien modelados.",
+    "headline": "Desarrollador full stack JavaScript. Construyo interfaces rápidas sobre datos bien modelados.",
     "cta": {
       "featured": "Ver proyecto destacado",
       "contact": "Contacto"
