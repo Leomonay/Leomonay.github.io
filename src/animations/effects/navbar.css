@@ -1,0 +1,64 @@
+/*
+ * Navbar surface + active section.
+ *
+ * - The translucent background, blur and bottom border live on a ::before layer that
+ *   only changes opacity: transparent over the hero, visible once the page scrolls
+ *   (NavState sets data-scrolled). Without JS it's always visible, so text never
+ *   sits on top of content without a background.
+ * - Active section: NavState sets aria-current="true" on the matching [data-nav-link];
+ *   desktop links show an underline that grows with scaleX.
+ */
+
+.site-header {
+  isolation: isolate;
+}
+
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-bottom: 1px solid var(--color-base-300);
+  background: color-mix(in oklab, var(--color-base-100) 85%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: opacity 200ms ease-out;
+}
+
+@media (scripting: enabled) {
+  .site-header:not([data-scrolled])::before {
+    opacity: 0;
+  }
+}
+
+/* Desktop nav: underline for the active section. */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0.75rem;
+  bottom: 0.25rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transition: transform 250ms var(--ease-out-expo);
+}
+
+.nav-link[aria-current='true'] {
+  color: var(--color-base-content);
+}
+
+.nav-link[aria-current='true']::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header::before,
+  .nav-link::after {
+    transition: none;
+  }
+}

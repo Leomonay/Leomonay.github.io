@@ -4,6 +4,7 @@ import { NAV_SECTIONS, SECTIONS } from '@/lib/sections';
 import { THEME_PREFERENCES } from '@/lib/theme';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
+import NavState from './NavState';
 import ThemeSwitcher from './ThemeSwitcher';
 
 // Server Component: renders the static markup and passes translated strings down as props,
@@ -33,48 +34,55 @@ export default async function Navbar() {
   );
 
   return (
-    <header className="sticky top-0 z-40 border-b border-base-300 bg-base-100/85 backdrop-blur supports-[backdrop-filter]:bg-base-100/70">
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded-field focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-content"
-      >
-        {t('skipToContent')}
-      </a>
-
-      <div className="container-page relative flex h-16 items-center justify-between gap-4">
+    <>
+      {/* 1px marker at the very top of the page; NavState watches it to know when the
+          page has scrolled (effects/navbar.css). */}
+      <span id="scroll-sentinel" aria-hidden="true" className="absolute top-0 h-px w-px" />
+      <header className="site-header sticky top-0 z-40">
         <a
-          href={`#${SECTIONS.hero}`}
-          className="font-display text-lg font-bold tracking-tight text-base-content hover:text-primary"
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded-field focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-content"
         >
-          {t('brand')}
+          {t('skipToContent')}
         </a>
 
-        <nav aria-label={t('label')} className="hidden md:block">
-          <ul className="flex items-center gap-1">
-            {links.map(({ id, label }) => (
-              <li key={id}>
-                <a
-                  href={`#${id}`}
-                  className="rounded-field px-3 py-2 text-sm font-medium text-base-content/75 transition-colors hover:bg-base-200 hover:text-base-content"
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="container-page relative flex h-16 items-center justify-between gap-4">
+          <a
+            href={`#${SECTIONS.hero}`}
+            className="font-display text-lg font-bold tracking-tight text-base-content hover:text-primary"
+          >
+            {t('brand')}
+          </a>
 
-        <div className="flex items-center gap-1 sm:gap-2">
-          <LanguageSwitcher locale={locale} label={t('language')} languages={languages} />
-          <ThemeSwitcher labels={themeLabels} />
-          <MobileMenu
-            links={links}
-            navLabel={t('label')}
-            openLabel={t('menu.open')}
-            closeLabel={t('menu.close')}
-          />
+          <nav aria-label={t('label')} className="hidden md:block">
+            <ul className="flex items-center gap-1">
+              {links.map(({ id, label }) => (
+                <li key={id}>
+                  <a
+                    href={`#${id}`}
+                    data-nav-link
+                    className="nav-link rounded-field px-3 py-2 text-sm font-medium text-base-content/75 transition-colors hover:bg-base-200 hover:text-base-content"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="flex items-center gap-1 sm:gap-2">
+            <LanguageSwitcher locale={locale} label={t('language')} languages={languages} />
+            <ThemeSwitcher labels={themeLabels} />
+            <MobileMenu
+              links={links}
+              navLabel={t('label')}
+              openLabel={t('menu.open')}
+              closeLabel={t('menu.close')}
+            />
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+      <NavState sentinelId="scroll-sentinel" />
+    </>
   );
 }

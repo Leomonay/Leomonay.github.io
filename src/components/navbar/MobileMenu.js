@@ -59,8 +59,9 @@ export default function MobileMenu({ links, openLabel, closeLabel, navLabel }) {
             <li key={id}>
               <a
                 href={`#${id}`}
+                data-nav-link
                 onClick={() => setOpen(false)}
-                className="block rounded-field px-4 py-3 font-medium text-base-content hover:bg-base-200"
+                className="block rounded-field px-4 py-3 font-medium text-base-content hover:bg-base-200 aria-[current=true]:bg-base-200 aria-[current=true]:text-primary"
               >
                 {label}
               </a>
