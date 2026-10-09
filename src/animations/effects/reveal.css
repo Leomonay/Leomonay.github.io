@@ -1,0 +1,23 @@
+/* Scroll-reveal effects: fade, fade-up, scale. */
+
+@media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+  [data-reveal] {
+    transition:
+      opacity var(--duration-reveal) var(--ease-out-expo),
+      translate var(--duration-reveal) var(--ease-out-expo),
+      scale var(--duration-reveal) var(--ease-out-expo);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  [data-reveal]:not([data-revealed]) {
+    opacity: 0;
+  }
+
+  [data-reveal='fade-up']:not([data-revealed]) {
+    translate: 0 1.5rem;
+  }
+
+  [data-reveal='scale']:not([data-revealed]) {
+    scale: 0.96;
+  }
+}

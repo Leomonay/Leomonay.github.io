@@ -1,0 +1,26 @@
+/*
+ * Animation layer. Every motion in the site lives here (or in ./effects/*.css) so
+ * new effects can be added without touching components.
+ *
+ * Conventions
+ * - Scroll reveal: add `data-reveal="<effect>"` to any element. RevealObserver sets
+ *   `data-revealed` when it enters the viewport. Optional stagger:
+ *   style={{ '--reveal-delay': '120ms' }}.
+ * - Hidden "before" states only apply when JS can reveal them
+ *   (`@media (scripting: enabled)`), so content never stays invisible without JS.
+ * - Everything is wrapped in `prefers-reduced-motion: no-preference`, so users who
+ *   ask for less motion get the final state immediately.
+ *
+ * Adding an effect: create ./effects/<name>.css with a
+ * `[data-reveal='<name>']` (hidden) and `[data-reveal='<name>'][data-revealed]`
+ * (visible) pair, import it below, and use data-reveal="<name>".
+ */
+
+@import './effects/reveal.css';
+@import './effects/disclosure.css';
+@import './effects/menu.css';
+
+@theme {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-reveal: 700ms;
+}

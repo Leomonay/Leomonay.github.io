@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale } from 'next-intl/server';
+import RevealObserver from '@/animations/RevealObserver';
 import HeadScripts from '@/components/HeadScripts';
 import { routing } from '@/i18n/routing';
 import { fontVariables } from '@/lib/fonts';
@@ -27,6 +28,7 @@ export default async function LocaleLayout({ children }) {
       </head>
       <body>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <RevealObserver />
       </body>
     </html>
   );

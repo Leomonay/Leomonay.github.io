@@ -1,0 +1,51 @@
+/*
+ * Expand/collapse panel for <Disclosure>.
+ * Animates grid-template-rows from 0fr to 1fr, which transitions to the content's
+ * real height without measuring it in JS. `visibility` switches at the end of the
+ * collapse, so collapsed content leaves the tab order and the accessibility tree.
+ * Without JS the toggle can't work, so the panel stays expanded.
+ */
+
+.disclosure-panel {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+@media (scripting: enabled) {
+  .disclosure-panel:not([data-open]) {
+    grid-template-rows: 0fr;
+    visibility: hidden;
+  }
+}
+
+/* The single child must be allowed to shrink below its content height. */
+.disclosure-panel > * {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.disclosure-icon {
+  transition: none;
+}
+
+.disclosure-trigger[aria-expanded='true'] .disclosure-icon {
+  rotate: 180deg;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .disclosure-panel {
+    transition:
+      grid-template-rows 350ms var(--ease-out-expo),
+      visibility 0s linear 350ms;
+  }
+
+  .disclosure-panel[data-open] {
+    transition:
+      grid-template-rows 350ms var(--ease-out-expo),
+      visibility 0s linear 0s;
+  }
+
+  .disclosure-icon {
+    transition: rotate 250ms var(--ease-out-expo);
+  }
+}

@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../animations/animations.css';
 
 /* Built-in daisyUI themes are disabled: only the two custom green themes below ship. */
 @plugin 'daisyui' {

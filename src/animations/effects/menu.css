@@ -1,0 +1,37 @@
+/*
+ * Dropdown menu (theme switcher). Closed menus are `visibility: hidden` so they can
+ * keep animating out while staying out of the tab order and accessibility tree.
+ */
+
+.menu-popover {
+  visibility: hidden;
+  opacity: 0;
+  transform-origin: top right;
+}
+
+.menu-popover[data-open] {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .menu-popover {
+    scale: 0.95;
+    translate: 0 -0.25rem;
+    transition:
+      opacity 150ms ease-in,
+      scale 150ms ease-in,
+      translate 150ms ease-in,
+      visibility 0s linear 150ms;
+  }
+
+  .menu-popover[data-open] {
+    scale: 1;
+    translate: 0 0;
+    transition:
+      opacity 200ms var(--ease-out-expo),
+      scale 200ms var(--ease-out-expo),
+      translate 200ms var(--ease-out-expo),
+      visibility 0s linear 0s;
+  }
+}
