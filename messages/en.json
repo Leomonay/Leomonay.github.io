@@ -45,8 +45,27 @@
   },
   "hero": {
     "name": "Leonardo Monay",
-    "role": "Full stack developer",
+    "role": "Full Stack JavaScript Developer",
     "headline": "Full stack developer with a frontend focus. I build fast interfaces on top of well-modeled data.",
+    "cta": {
+      "featured": "View featured project",
+      "contact": "Contact"
+    },
+    "factsLabel": "Quick facts",
+    "facts": [
+      {
+        "id": "coding",
+        "text": "5 years of coding"
+      },
+      {
+        "id": "industry",
+        "text": "15 years in industry"
+      },
+      {
+        "id": "languages",
+        "text": "Spanish · English"
+      }
+    ],
     "location": "San Nicolás de los Arroyos, Buenos Aires, Argentina",
     "stackLabel": "Main stack",
     "stack": [
