@@ -171,6 +171,10 @@ Agregá un objeto al array `experience.items`, **en los dos archivos y en la mis
 
 Agregá el namespace a `CLIENT_NAMESPACES` en `src/app/[locale]/layout.js`. Solo esos namespaces se serializan en la página: el resto del texto se renderiza en el servidor y no viaja dos veces.
 
+### Usar un componente nuevo de daisyUI
+
+daisyUI está limitado a las piezas que el sitio usa (`include` en `@plugin "daisyui"`, en `globals.css`). Antes de usar un componente nuevo (por ejemplo `modal` o `tooltip`), sumá su nombre a esa lista: si no está, sus clases no generan CSS. La lista existe porque, sin ella, Tailwind incluía cualquier componente cuyo nombre aparecía como palabra en el proyecto, y eso sumaba unos 45 KB de CSS sin usar que bloqueaba el render.
+
 ### Agregar un efecto de animación
 
 Creá `src/animations/effects/<nombre>.css` con el estado oculto (`[data-reveal='<nombre>']:not([data-revealed])`) dentro de las dos media queries de arriba, importalo en `animations.css` y usá `data-reveal="<nombre>"`.
