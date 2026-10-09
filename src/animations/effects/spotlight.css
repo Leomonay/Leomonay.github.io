@@ -1,0 +1,38 @@
+/*
+ * Cursor-following spotlight for [data-spotlight] cards (desktop pointers only).
+ * SpotlightController writes --spot-x / --spot-y; the glow fades in on hover.
+ *
+ * `isolation: isolate` makes the card its own stacking context, so the ::after with
+ * z-index -1 sits above the card's background but below its text (text contrast
+ * is unaffected beyond a faint tint; checked as "spotlight" in check:contrast).
+ * Without a fine pointer or with reduced motion the controller never runs and the
+ * glow stays at opacity 0.
+ */
+
+[data-spotlight] {
+  --spot-glow: color-mix(in oklab, var(--color-primary) 10%, transparent);
+  position: relative;
+  isolation: isolate;
+}
+
+[data-spotlight]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    18rem circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    var(--spot-glow),
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease-out;
+}
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  [data-spotlight]:hover::after {
+    opacity: 1;
+  }
+}

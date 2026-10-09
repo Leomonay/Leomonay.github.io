@@ -147,8 +147,20 @@ function featuredPairs(themeName, glow) {
   ];
 }
 
+// Text inside a [data-spotlight] card (base-100) at the center of the cursor glow.
+function spotlightPairs(themeName, spot) {
+  const { glow } = forTheme(spot, themeName);
+  const bg = { label: 'spotlight', layers: [['base-100', 1], glow] };
+  return [
+    ['base-content', bg, 4.5],
+    ['base-content', bg, 4.5, 0.75],
+    ['primary', bg, 4.5],
+  ];
+}
+
 const aurora = parseLayers(readEffect('aurora.css'), '.hero-backdrop', 'aurora');
 const glow = parseLayers(readEffect('featured-backdrop.css'), '.featured-backdrop', 'glow');
+const spot = parseLayers(readEffect('spotlight.css'), '[data-spotlight]', 'spot');
 
 let failed = 0;
 for (const theme of parseThemes(readFileSync(CSS_PATH, 'utf8'))) {
@@ -157,6 +169,7 @@ for (const theme of parseThemes(readFileSync(CSS_PATH, 'utf8'))) {
     ...PAIRS,
     ...auroraPairs(theme.name, aurora),
     ...featuredPairs(theme.name, glow),
+    ...spotlightPairs(theme.name, spot),
   ]) {
     const bg = background(theme, bgSpec);
     const fg = blend(oklchToSrgb(theme.colors[fgKey]), bg, alpha);

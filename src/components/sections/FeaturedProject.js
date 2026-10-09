@@ -163,6 +163,7 @@ export default async function FeaturedProject() {
                   key={id}
                   data-reveal="fade-up"
                   style={revealDelay(i)}
+                  data-spotlight
                   className="flex gap-4 rounded-box border border-base-300 bg-base-100 p-5 lg:flex-col lg:gap-3"
                 >
                   <span

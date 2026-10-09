@@ -35,6 +35,7 @@ export default function ExperienceItem({ item, index, t, newTabLabel }) {
         as="article"
         interactive
         gradientBorder
+        data-spotlight
         title={t(`${key}.company`)}
         meta={`${t(`${key}.role`)} · ${t(`${key}.period`)}`}
       >
