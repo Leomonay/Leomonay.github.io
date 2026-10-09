@@ -185,7 +185,9 @@
   }
 
   /* Small label above a heading (role, kicker). */
+  /* Opaque tint (primary mixed into base-100, not primary/10) so its contrast doesn't
+     depend on what's behind it, e.g. the hero aurora. */
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm font-semibold text-primary;
+    @apply inline-flex items-center gap-2 rounded-full border border-primary/30 bg-[color-mix(in_oklab,var(--color-primary)_10%,var(--color-base-100))] px-3 py-1 text-sm font-semibold text-primary;
   }
 }

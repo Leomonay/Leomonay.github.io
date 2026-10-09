@@ -5,10 +5,15 @@
 // then use the WCAG relative-luminance formula. Translucent text (e.g.
 // `text-base-content/75`) is alpha-blended over its background in sRGB, the
 // same way the browser composites it.
+//
+// Backgrounds can be a theme color ('base-100') or a stack of translucent layers
+// ([['base-100', 1], ['primary', 0.18]]), e.g. text over the hero aurora. Those
+// strengths are read from the effect's CSS so the check follows any tweak there.
 
 import { readFileSync } from 'node:fs';
 
 const CSS_PATH = new URL('../src/styles/globals.css', import.meta.url);
+const AURORA_PATH = new URL('../src/animations/effects/aurora.css', import.meta.url);
 
 // [foreground, background, minimum ratio, alpha of the foreground]
 const PAIRS = [
@@ -42,6 +47,42 @@ function parseThemes(css) {
   }));
 }
 
+// Aurora light strengths per theme: { default: {a: ['primary', 0.18], b: [...]}, forest: {...} }.
+function parseAurora(css) {
+  const out = {};
+  for (const [, theme = 'default', body] of css.matchAll(
+    /(?:\[data-theme='([\w-]+)'\]\s*)?\.hero-backdrop\s*\{([^}]*)\}/g,
+  )) {
+    for (const [, layer, color, pct] of body.matchAll(
+      /--aurora-(\w+):\s*color-mix\(in oklab, var\(--color-([\w-]+)\) (\d+)%/g,
+    )) {
+      (out[theme] ??= {})[layer] = [color, Number(pct) / 100];
+    }
+  }
+  return out;
+}
+
+// Extra pairs for text over the aurora, worst case: both lights overlapping at full strength.
+function auroraPairs(themeName, aurora) {
+  const { a, b } = { ...aurora.default, ...aurora[themeName] };
+  const bg = { label: 'aurora', layers: [['base-100', 1], a, b] };
+  // The eyebrow has an opaque background (primary mixed into base-100), so the aurora
+  // doesn't reach its text.
+  const eyebrowBg = {
+    label: 'eyebrow',
+    layers: [
+      ['base-100', 1],
+      ['primary', 0.1],
+    ],
+  };
+  return [
+    ['base-content', bg, 4.5], // name, labels
+    ['base-content', bg, 4.5, 0.75], // headline, quick facts
+    ['primary', bg, 4.5], // outline button, icons
+    ['primary', eyebrowBg, 4.5], // role eyebrow
+  ];
+}
+
 function oklchToSrgb([L, C, H]) {
   const h = (H * Math.PI) / 180;
   const a = C * Math.cos(h);
@@ -73,16 +114,28 @@ function ratio(a, b) {
   return (hi + 0.05) / (lo + 0.05);
 }
 
+// Composite a background spec (color key or layer stack) into one sRGB color.
+function background(theme, spec) {
+  if (typeof spec === 'string') return oklchToSrgb(theme.colors[spec]);
+  return spec.layers.reduce(
+    (acc, [key, alpha]) => blend(oklchToSrgb(theme.colors[key]), acc ?? [0, 0, 0], alpha),
+    null,
+  );
+}
+
+const aurora = parseAurora(readFileSync(AURORA_PATH, 'utf8'));
+
 let failed = 0;
 for (const theme of parseThemes(readFileSync(CSS_PATH, 'utf8'))) {
   console.log(`\n${theme.name}`);
-  for (const [fgKey, bgKey, min, alpha = 1] of PAIRS) {
-    const bg = oklchToSrgb(theme.colors[bgKey]);
+  for (const [fgKey, bgSpec, min, alpha = 1] of [...PAIRS, ...auroraPairs(theme.name, aurora)]) {
+    const bg = background(theme, bgSpec);
     const fg = blend(oklchToSrgb(theme.colors[fgKey]), bg, alpha);
     const r = ratio(fg, bg);
     const ok = r >= min;
     if (!ok) failed++;
-    const label = `${fgKey}${alpha < 1 ? `/${alpha * 100}` : ''} on ${bgKey}`;
+    const bgLabel = typeof bgSpec === 'string' ? bgSpec : bgSpec.label;
+    const label = `${fgKey}${alpha < 1 ? `/${alpha * 100}` : ''} on ${bgLabel}`;
     console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${label.padEnd(34)} ${r.toFixed(2)}:1 (min ${min})`);
   }
 }

@@ -1,0 +1,72 @@
+/*
+ * Hero aurora: two soft radial "lights" in theme greens drifting very slowly.
+ *
+ * - Colors come from theme variables via color-mix, so both themes work and a theme
+ *   switch updates them instantly. Strength is tuned per theme; the text on top keeps
+ *   WCAG AA (see the "aurora" pairs in scripts/check-contrast.mjs).
+ * - Only `transform` is animated (compositor-only, no layout or paint per frame) and
+ *   there's no `filter: blur()`, which is expensive on phones; the softness comes from
+ *   the gradient itself. An animated transform gets its own layer, so no will-change.
+ * - The loop pauses off-screen and in hidden tabs: LoopController sets data-paused.
+ * - prefers-reduced-motion: the lights stay, static.
+ */
+
+.hero-backdrop {
+  --aurora-a: color-mix(in oklab, var(--color-primary) 12%, transparent);
+  --aurora-b: color-mix(in oklab, var(--color-secondary) 10%, transparent);
+  overflow: hidden;
+}
+
+[data-theme='forest'] .hero-backdrop {
+  --aurora-a: color-mix(in oklab, var(--color-primary) 16%, transparent);
+  --aurora-b: color-mix(in oklab, var(--color-secondary) 12%, transparent);
+}
+
+.hero-backdrop::before,
+.hero-backdrop::after {
+  content: '';
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-backdrop::before {
+  top: -30vmax;
+  left: -25vmax;
+  background: radial-gradient(closest-side, var(--aurora-a), transparent);
+}
+
+.hero-backdrop::after {
+  right: -30vmax;
+  bottom: -40vmax;
+  background: radial-gradient(closest-side, var(--aurora-b), transparent);
+}
+
+@keyframes aurora-drift-a {
+  to {
+    transform: translate3d(12vmax, 8vmax, 0) scale(1.15);
+  }
+}
+
+@keyframes aurora-drift-b {
+  to {
+    transform: translate3d(-10vmax, -6vmax, 0) scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-backdrop::before {
+    animation: aurora-drift-a 28s ease-in-out infinite alternate;
+  }
+
+  .hero-backdrop::after {
+    animation: aurora-drift-b 34s ease-in-out infinite alternate;
+  }
+
+  .hero-backdrop[data-paused]::before,
+  .hero-backdrop[data-paused]::after {
+    animation-play-state: paused;
+  }
+}

@@ -11,6 +11,9 @@
  * - Everything is wrapped in `prefers-reduced-motion: no-preference`, so users who
  *   ask for less motion get the final state immediately.
  *
+ * - Looping animations: add `data-loop` to the element; LoopController sets
+ *   `data-paused` while it's off-screen or the tab is hidden.
+ *
  * Adding an effect: create ./effects/<name>.css with a
  * `[data-reveal='<name>']` (hidden) and `[data-reveal='<name>'][data-revealed]`
  * (visible) pair, import it below, and use data-reveal="<name>".
@@ -19,6 +22,7 @@
 @import './effects/reveal.css';
 @import './effects/disclosure.css';
 @import './effects/menu.css';
+@import './effects/aurora.css';
 
 @theme {
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);

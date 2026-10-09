@@ -35,11 +35,14 @@ export default async function Hero() {
   ];
 
   return (
-    <section id={SECTIONS.hero} aria-labelledby="hero-title" className="relative isolate">
-      {/* Decorative layer for the next phase's background effects (gradients). */}
-      <div aria-hidden="true" className="hero-backdrop absolute inset-0 -z-10" />
+    // -mt-16 slides the hero under the sticky navbar (h-16) so the aurora also shows
+    // behind its translucent background instead of stopping at a hard edge; the extra
+    // top padding puts the content back where it was.
+    <section id={SECTIONS.hero} aria-labelledby="hero-title" className="relative isolate -mt-16">
+      {/* Animated aurora (src/animations/effects/aurora.css); paused off-screen via data-loop. */}
+      <div aria-hidden="true" data-loop className="hero-backdrop absolute inset-0 -z-10" />
 
-      <div className="container-page flex flex-col items-start gap-6 pt-12 pb-16 sm:pt-20 sm:pb-24">
+      <div className="container-page flex flex-col items-start gap-6 pt-28 pb-16 sm:pt-36 sm:pb-24">
         <p className="eyebrow">{t('role')}</p>
 
         <div className="flex flex-col gap-4">

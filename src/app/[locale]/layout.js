@@ -1,4 +1,5 @@
 import { getLocale, getTranslations } from 'next-intl/server';
+import LoopController from '@/animations/LoopController';
 import RevealObserver from '@/animations/RevealObserver';
 import HeadScripts from '@/components/HeadScripts';
 import { routing } from '@/i18n/routing';
@@ -81,6 +82,7 @@ export default async function LocaleLayout({ children }) {
       <body>
         {children}
         <RevealObserver />
+        <LoopController />
       </body>
     </html>
   );
