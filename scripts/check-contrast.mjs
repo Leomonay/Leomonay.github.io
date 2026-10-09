@@ -13,7 +13,8 @@
 import { readFileSync } from 'node:fs';
 
 const CSS_PATH = new URL('../src/styles/globals.css', import.meta.url);
-const AURORA_PATH = new URL('../src/animations/effects/aurora.css', import.meta.url);
+const EFFECTS = new URL('../src/animations/effects/', import.meta.url);
+const readEffect = (file) => readFileSync(new URL(file, EFFECTS), 'utf8');
 
 // [foreground, background, minimum ratio, alpha of the foreground]
 const PAIRS = [
@@ -47,24 +48,34 @@ function parseThemes(css) {
   }));
 }
 
-// Aurora light strengths per theme: { default: {a: ['primary', 0.18], b: [...]}, forest: {...} }.
-function parseAurora(css) {
+// Translucent layer strengths declared in an effect's CSS, per theme. Reads
+// `--<prefix>-<name>: color-mix(in oklab, var(--color-<color>) <pct>%, transparent)`
+// inside `<selector> {…}` and `[data-theme='x'] <selector> {…}`.
+// Returns { default: { a: ['primary', 0.12], … }, forest: { … } }.
+function parseLayers(css, selector, prefix) {
+  const escaped = selector.replace(/[.[\]]/g, '\\$&');
+  const blocks = new RegExp(
+    String.raw`(?:\[data-theme='([\w-]+)'\]\s*)?${escaped}\s*\{([^}]*)\}`,
+    'g',
+  );
+  const decl = new RegExp(
+    String.raw`--${prefix}-(\w+):\s*color-mix\(in oklab, var\(--color-([\w-]+)\) (\d+)%`,
+    'g',
+  );
   const out = {};
-  for (const [, theme = 'default', body] of css.matchAll(
-    /(?:\[data-theme='([\w-]+)'\]\s*)?\.hero-backdrop\s*\{([^}]*)\}/g,
-  )) {
-    for (const [, layer, color, pct] of body.matchAll(
-      /--aurora-(\w+):\s*color-mix\(in oklab, var\(--color-([\w-]+)\) (\d+)%/g,
-    )) {
+  for (const [, theme = 'default', body] of css.matchAll(blocks)) {
+    for (const [, layer, color, pct] of body.matchAll(decl)) {
       (out[theme] ??= {})[layer] = [color, Number(pct) / 100];
     }
   }
   return out;
 }
 
-// Extra pairs for text over the aurora, worst case: both lights overlapping at full strength.
+const forTheme = (layers, themeName) => ({ ...layers.default, ...layers[themeName] });
+
+// Text over the hero aurora, worst case: both lights overlapping at full strength.
 function auroraPairs(themeName, aurora) {
-  const { a, b } = { ...aurora.default, ...aurora[themeName] };
+  const { a, b } = forTheme(aurora, themeName);
   const bg = { label: 'aurora', layers: [['base-100', 1], a, b] };
   // The eyebrow has an opaque background (primary mixed into base-100), so the aurora
   // doesn't reach its text.
@@ -123,12 +134,30 @@ function background(theme, spec) {
   );
 }
 
-const aurora = parseAurora(readFileSync(AURORA_PATH, 'utf8'));
+// Text on the featured band (base-200) under its corner glows; the glows sit in
+// opposite corners, so the worst case is the stronger one alone.
+function featuredPairs(themeName, glow) {
+  const { a, b } = forTheme(glow, themeName);
+  const strongest = a[1] >= b[1] ? a : b;
+  const bg = { label: 'featured glow', layers: [['base-200', 1], strongest] };
+  return [
+    ['base-content', bg, 4.5],
+    ['base-content', bg, 4.5, 0.75],
+    ['primary', bg, 4.5],
+  ];
+}
+
+const aurora = parseLayers(readEffect('aurora.css'), '.hero-backdrop', 'aurora');
+const glow = parseLayers(readEffect('featured-backdrop.css'), '.featured-backdrop', 'glow');
 
 let failed = 0;
 for (const theme of parseThemes(readFileSync(CSS_PATH, 'utf8'))) {
   console.log(`\n${theme.name}`);
-  for (const [fgKey, bgSpec, min, alpha = 1] of [...PAIRS, ...auroraPairs(theme.name, aurora)]) {
+  for (const [fgKey, bgSpec, min, alpha = 1] of [
+    ...PAIRS,
+    ...auroraPairs(theme.name, aurora),
+    ...featuredPairs(theme.name, glow),
+  ]) {
     const bg = background(theme, bgSpec);
     const fg = blend(oklchToSrgb(theme.colors[fgKey]), bg, alpha);
     const r = ratio(fg, bg);

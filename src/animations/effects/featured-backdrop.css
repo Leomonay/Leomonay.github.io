@@ -1,0 +1,18 @@
+/*
+ * Featured project band: static glows in two opposite corners over base-200.
+ * No animation, no runtime cost. Strengths are read by scripts/check-contrast.mjs
+ * ("featured glow" pairs), so keep the --glow-* declarations in this shape.
+ */
+
+.featured-backdrop {
+  --glow-a: color-mix(in oklab, var(--color-primary) 12%, transparent);
+  --glow-b: color-mix(in oklab, var(--color-secondary) 10%, transparent);
+  background:
+    radial-gradient(55% 45% at 100% 0%, var(--glow-a), transparent),
+    radial-gradient(45% 40% at 0% 100%, var(--glow-b), transparent);
+}
+
+[data-theme='forest'] .featured-backdrop {
+  --glow-a: color-mix(in oklab, var(--color-primary) 10%, transparent);
+  --glow-b: color-mix(in oklab, var(--color-secondary) 8%, transparent);
+}

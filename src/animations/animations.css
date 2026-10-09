@@ -23,6 +23,7 @@
 @import './effects/disclosure.css';
 @import './effects/menu.css';
 @import './effects/aurora.css';
+@import './effects/featured-backdrop.css';
 
 @theme {
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
