@@ -55,7 +55,7 @@ export default async function Hero() {
         <div className="flex flex-wrap gap-3">
           <Button href={`#${SECTIONS.featured}`} size="lg">
             {t('cta.featured')}
-            <ArrowRightIcon />
+            <ArrowRightIcon className="icon-nudge size-5" />
           </Button>
           <Button href={`#${SECTIONS.contact}`} intent="outline" size="lg">
             {t('cta.contact')}

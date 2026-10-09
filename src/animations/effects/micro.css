@@ -1,0 +1,56 @@
+/*
+ * Micro-interactions.
+ * - .icon-nudge: an icon inside a button/link moves 2px toward its direction on hover.
+ * - .link-grow: text links keep a faint underline at rest (links never rely on color
+ *   alone) and a solid one grows over it on hover/focus (scaleX, compositor-only).
+ *   Meant for single-line links.
+ * Both are static under prefers-reduced-motion (the solid underline just appears).
+ */
+
+.icon-nudge {
+  transition: translate 200ms var(--ease-out-expo);
+}
+
+:is(a, button):is(:hover, :focus-visible) .icon-nudge {
+  translate: 2px 0;
+}
+
+.link-grow {
+  position: relative;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in oklab, currentColor 35%, transparent);
+  text-underline-offset: 0.2em;
+}
+
+.link-grow::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: -0.1em;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms var(--ease-out-expo);
+}
+
+.link-grow:is(:hover, :focus-visible) {
+  /* The solid line takes over; hiding the faint one avoids a double underline. */
+  text-decoration-color: transparent;
+}
+
+.link-grow:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-nudge,
+  .link-grow::after {
+    transition: none;
+  }
+
+  :is(a, button):is(:hover, :focus-visible) .icon-nudge {
+    translate: none;
+  }
+}

@@ -31,6 +31,7 @@
 @import './effects/theme-transition.css';
 @import './effects/navbar.css';
 @import './effects/accents.css';
+@import './effects/micro.css';
 
 @theme {
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);

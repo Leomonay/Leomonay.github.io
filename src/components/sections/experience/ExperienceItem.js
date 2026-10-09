@@ -16,7 +16,12 @@ export default function ExperienceItem({ item, index, t, newTabLabel }) {
   // Rich tags available to any experience string, e.g. "<link>Kelp Digital</link>".
   const rich = {
     link: (chunks) => (
-      <a href={item.url} target="_blank" rel="noopener noreferrer" className="link link-primary">
+      <a
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="link-grow text-primary"
+      >
         {chunks}
         <span className="sr-only"> {newTabLabel}</span>
       </a>

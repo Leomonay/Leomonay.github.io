@@ -20,7 +20,7 @@ export default async function Footer() {
           href={SOURCE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 self-start rounded-field font-medium text-primary underline-offset-4 hover:underline sm:self-auto"
+          className="link-grow inline-flex items-center gap-2 self-start font-medium text-primary sm:self-auto"
         >
           <GitHubIcon className="size-4" />
           {t('source')}
