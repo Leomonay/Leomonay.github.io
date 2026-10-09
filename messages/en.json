@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "title": "Leonardo Monay — Full stack developer",
+    "description": "Full stack developer with a frontend focus. I build fast interfaces on top of well-modeled data.",
+    "ogLocale": "en_US"
+  },
+  "root": {
+    "linkLabel": "View in English"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you are looking for doesn't exist.",
+    "back": "Go to the home page"
+  }
+}
