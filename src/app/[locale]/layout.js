@@ -1,4 +1,5 @@
 import { getLocale, getTranslations } from 'next-intl/server';
+import CounterController from '@/animations/CounterController';
 import LoopController from '@/animations/LoopController';
 import RevealObserver from '@/animations/RevealObserver';
 import SpotlightController from '@/animations/SpotlightController';
@@ -85,6 +86,7 @@ export default async function LocaleLayout({ children }) {
         <RevealObserver />
         <LoopController />
         <SpotlightController />
+        <CounterController />
       </body>
     </html>
   );

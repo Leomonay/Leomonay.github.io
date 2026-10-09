@@ -88,6 +88,7 @@ export default async function FeaturedProject() {
             {t.raw('metrics').map((_, i) => (
               <Stat
                 key={i}
+                animate
                 value={t(`metrics.${i}.value`)}
                 label={t(`metrics.${i}.label`)}
                 data-reveal="fade-up"
