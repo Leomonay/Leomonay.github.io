@@ -160,6 +160,21 @@
     @apply border-dashed bg-transparent font-normal text-base-content/75;
   }
 
+  /* Compact vertical timeline: a left rule with a dot per item.
+     (Not named .timeline: daisyUI already ships a component with that name.) */
+  .rail {
+    @apply relative flex flex-col gap-6 border-l border-base-300 pl-6;
+  }
+
+  .rail-item {
+    @apply relative;
+  }
+
+  /* Dot centred on the rule: pl-6 (1.5rem) + half the dot (0.3125rem) + half the 1px rule. */
+  .rail-item::before {
+    @apply absolute top-1.5 -left-[calc(1.5rem+0.3125rem+0.5px)] size-2.5 rounded-full bg-primary ring-4 ring-base-100 content-[''];
+  }
+
   /* Small label above a heading (role, kicker). */
   .eyebrow {
     @apply inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm font-semibold text-primary;
