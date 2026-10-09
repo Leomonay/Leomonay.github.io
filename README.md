@@ -94,7 +94,7 @@ src/
 - **Sin parpadeo:** `lib/inline-scripts.js` genera un script que corre en `<head>` antes del primer pintado. Lee la preferencia, resuelve "sistema" con `matchMedia` y pone `data-theme` en `<html>`. Por eso `<html>` lleva `suppressHydrationWarning`: el atributo difiere a propósito entre el HTML del servidor y el DOM. El flag solo afecta a ese elemento.
 - **"Sistema"** escucha cambios de `prefers-color-scheme` mientras la página está abierta.
 - **Sin JS:** se aplica `leaf` por defecto, o `forest` si el sistema prefiere oscuro (`prefersdark`).
-- El contraste AA se verifica con `npm run check:contrast` (pares texto/fondo, incluido el texto atenuado `/75`).
+- El contraste AA se verifica con `npm run check:contrast` (pares texto/fondo, incluido el texto atenuado `/75`). También cubre el texto sobre los efectos (aurora, brillo del destacado, spotlight): el script lee sus intensidades del CSS y evalúa el peor caso.
 
 ### Estilos: `@apply` vs `tailwind-variants`
 
@@ -102,20 +102,44 @@ src/
 - **`tailwind-variants`** para componentes con props: `Button` (`intent`, `size`, `square`) y `Card` (slots `root/header/title/meta/body`, variantes `tone` e `interactive`).
 - **Por qué `tailwind-variants` y no `cva`:** resuelve conflictos de clases con tailwind-merge sin configuración (un `className="px-8"` reemplaza el padding de la variante en vez de competir con él) y soporta _slots_, que `Card` necesita para estilar varias partes desde una sola definición.
 
-### Animaciones
+### Animaciones y efectos
 
-Todo vive en `src/animations/`:
+Todo vive en `src/animations/`: CSS por efecto en `effects/` (importado desde `animations.css`) y unos pocos controladores client sin markup, montados una vez en el layout.
 
-- `effects/reveal.css`: revelado al hacer scroll. Se activa con `data-reveal="fade" | "fade-up" | "scale"` y un stagger opcional con `style={{ '--reveal-delay': '120ms' }}`.
-- `RevealObserver.js`: un único `IntersectionObserver` para toda la página. Así las secciones siguen siendo Server Components y solo necesitan el atributo.
-- `effects/disclosure.css`: el desplegable anima `grid-template-rows: 0fr → 1fr`, que llega a la altura real sin medirla en JS. Cuando está cerrado aplica `visibility: hidden`, así el contenido sale del orden de tabulación.
-- `effects/menu.css`: la transición del menú de tema y del menú móvil.
-- Capas decorativas vacías, con `aria-hidden`, reservadas para fondos y gradientes: `.hero-backdrop` en el Hero y `.featured-backdrop` en el Proyecto destacado (vía la prop `decoration` de `Section`).
+**Controladores** (cada uno, un solo observer o listener para toda la página; las secciones siguen siendo Server Components y solo llevan atributos):
 
-Hay dos reglas que valen para todo efecto:
+| Archivo                         | Qué hace                                                                                                                     |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `RevealObserver.js`             | `data-reveal` → `data-revealed` la primera vez que el elemento entra en pantalla.                                            |
+| `LoopController.js`             | `data-loop` → `data-paused` cuando el elemento sale de pantalla o la pestaña se oculta.                                      |
+| `SpotlightController.js`        | Posición del cursor en `--spot-x/--spot-y` de las tarjetas `data-spotlight` (solo `pointer: fine`, sin movimiento reducido). |
+| `CounterController.js`          | Cuenta de 0 al valor los `data-count` que estaban fuera de pantalla al cargar.                                               |
+| `components/navbar/NavState.js` | `data-scrolled` en la navbar y `aria-current` en el link de la sección activa.                                               |
 
-- Los estados ocultos solo aplican con `@media (scripting: enabled)`, para que sin JS nunca quede contenido invisible.
-- Todo movimiento va dentro de `@media (prefers-reduced-motion: no-preference)`.
+**Efectos** (`effects/`):
+
+- `reveal.css`: `data-reveal="fade" | "fade-up" | "fade-left" | "fade-right" | "scale"`. Escalonado con `style={revealDelay(i)}` (`reveal.js`: paso de 80 ms con tope). Las variantes laterales vuelven a `fade-up` en móvil.
+- `aurora.css`: dos luces del tema que se mueven lento detrás del Hero (solo `transform`, pausadas fuera de pantalla).
+- `featured-backdrop.css`: brillos estáticos en la banda del Proyecto destacado.
+- `text-gradient.css`: gradiente en el nombre (`.text-gradient`).
+- `gradient-border.css`: anillo con gradiente en hover (variante `gradientBorder` de `Card`).
+- `separators.css`: línea fina entre secciones.
+- `spotlight.css`: brillo que sigue al cursor (`data-spotlight`).
+- `disclosure.css`: altura del desplegable (`grid-template-rows`) más fundido del contenido.
+- `theme-transition.css`: fundido al cambiar de tema (View Transitions API, lo inicia `ThemeSwitcher`).
+- `navbar.css`: fondo de la navbar al hacer scroll y subrayado de la sección activa.
+- `accents.css`: gradientes en la barrita de los títulos y el borde del `.eyebrow`.
+- `micro.css`: `.icon-nudge` (flecha del CTA) y `.link-grow` (subrayado que crece).
+- `menu.css`: transición del menú de tema y del menú móvil.
+
+**Reglas para cualquier efecto nuevo:**
+
+- Animar solo `transform` y `opacity`. La única excepción es la altura del desplegable: la dispara el usuario y es corta.
+- Estados ocultos solo con `@media (scripting: enabled)`: sin JS nunca queda contenido invisible.
+- Movimiento solo dentro de `@media (prefers-reduced-motion: no-preference)`. Con movimiento reducido, como mucho fundidos breves.
+- Loops con `data-loop`, para que se pausen cuando no se ven.
+- Colores desde variables del tema (`color-mix` con `--color-*`). Si el efecto pone color detrás de texto, declarar su intensidad como variable `color-mix(...)` y sumar sus pares a `scripts/check-contrast.mjs` (ver `parseLayers`).
+- `forced-colors`: los efectos decorativos se apagan o vuelven a colores del sistema.
 
 ### Accesibilidad
 
