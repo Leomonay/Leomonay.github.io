@@ -122,19 +122,99 @@
     "context": "Sistema de gestión de mantenimiento de climatización industrial",
     "techLabel": "Tecnologías",
     "tech": ["MongoDB", "Express", "React", "Node.js"],
-    "highlights": [
-      "Diseñé y desarrollé de punta a punta el sistema que reemplazó una base Access local, en producción desde 2023.",
-      "160 usuarios activos gestionan 2.900 equipos en 11 plantas industriales, con más de 22.000 órdenes de trabajo registradas desde 2024.",
-      "Redujo la carga de trabajos realizados de un promedio de 3 días (con demoras de hasta 2 semanas) a cargarse en el mismo día."
+    "summary": "Diseñé y desarrollé de punta a punta el sistema que reemplazó una base Access local, en producción desde 2023.",
+    "metricsTitle": "En números",
+    "metrics": [
+      {
+        "value": "160",
+        "label": "usuarios activos"
+      },
+      {
+        "value": "2.900",
+        "label": "equipos"
+      },
+      {
+        "value": "11",
+        "label": "plantas industriales"
+      },
+      {
+        "value": "+22.000",
+        "label": "órdenes de trabajo desde 2024"
+      }
     ],
+    "comparison": {
+      "title": "Antes y después",
+      "before": {
+        "title": "Antes",
+        "items": [
+          "Formularios de Access en una red de 3 computadoras",
+          "Planillas en papel que transcribía el encargado del pañol",
+          "Carga en 3 días en promedio (hasta 2 semanas)"
+        ]
+      },
+      "after": {
+        "title": "Después",
+        "items": [
+          "Sistema web con acceso por roles",
+          "Los técnicos cargan su trabajo directamente",
+          "Información disponible en el mismo día"
+        ]
+      }
+    },
+    "rolesTitle": "Quién lo usa",
+    "roles": [
+      {
+        "id": "supervisors",
+        "name": "Supervisores",
+        "text": "Planifican y generan órdenes de trabajo."
+      },
+      {
+        "id": "technicians",
+        "name": "Técnicos",
+        "text": "Ven sus asignaciones y cargan avances."
+      },
+      {
+        "id": "admins",
+        "name": "Administradores",
+        "text": "Controlan la actividad."
+      },
+      {
+        "id": "managers",
+        "name": "Gerentes",
+        "text": "Consultan historiales y tendencias."
+      }
+    ],
+    "featuresTitle": "Funcionalidades principales",
+    "features": [
+      {
+        "id": "access",
+        "text": "Acceso web con roles"
+      },
+      {
+        "id": "orders",
+        "text": "Carga de órdenes pensada para escribir lo mínimo"
+      },
+      {
+        "id": "history",
+        "text": "Historial completo por equipo"
+      },
+      {
+        "id": "excel",
+        "text": "Importación y exportación en Excel"
+      }
+    ],
+    "why": {
+      "title": "Por qué yo",
+      "text": "Trabajé 5 años como administrador general en una de las plantas y conocía de primera mano qué se necesitaba registrar. Empecé el sistema como proyecto personal y, al mostrarlo, la empresa decidió adoptarlo."
+    },
+    "caseToggle": {
+      "show": "Leer el caso completo",
+      "hide": "Ocultar el caso completo"
+    },
     "details": [
       {
         "title": "Problema",
         "text": "La empresa registraba su actividad en formularios de Access en una red de tres computadoras. Los técnicos completaban planillas en papel que transcribía el encargado del pañol; los datos tardaban en promedio 3 días en cargarse, y a veces hasta 2 semanas. El sistema había sido diseñado por alguien ajeno al negocio y la carga solía traer problemas."
-      },
-      {
-        "title": "Por qué yo",
-        "text": "Trabajé 5 años como administrador general en una de las plantas y conocía de primera mano qué se necesitaba registrar. Empecé el sistema como proyecto personal y, al mostrarlo, la empresa decidió adoptarlo."
       },
       {
         "title": "Qué hice",
@@ -145,6 +225,10 @@
         "text": "Los técnicos cargan su trabajo directamente y la información está disponible en el día. La gerencia usa el historial y la evolución de reclamos para justificar decisiones de presupuesto."
       }
     ],
+    "screenshots": {
+      "title": "Capturas",
+      "placeholder": "Capturas en preparación"
+    },
     "demo": {
       "label": "Ver demo",
       "url": ""

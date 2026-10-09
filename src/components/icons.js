@@ -136,3 +136,78 @@ export const MapPinIcon = (props) => (
     <circle cx="12" cy="10" r="3" />
   </Icon>
 );
+
+export const ClipboardIcon = (props) => (
+  <Icon {...props}>
+    <rect x="8" y="2" width="8" height="4" rx="1" />
+    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 12h6M9 16h4" />
+  </Icon>
+);
+
+export const WrenchIcon = (props) => (
+  <Icon {...props}>
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z" />
+  </Icon>
+);
+
+export const ShieldIcon = (props) => (
+  <Icon {...props}>
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+    <path d="m9 12 2 2 4-4" />
+  </Icon>
+);
+
+export const ChartIcon = (props) => (
+  <Icon {...props}>
+    <path d="M3 3v18h18" />
+    <path d="m7 15 4-4 3 3 5-6" />
+  </Icon>
+);
+
+export const KeyIcon = (props) => (
+  <Icon {...props}>
+    <circle cx="7.5" cy="15.5" r="4.5" />
+    <path d="m10.7 12.3 9.3-9.3M17 6l3 3M14 9l2 2" />
+  </Icon>
+);
+
+export const PencilIcon = (props) => (
+  <Icon {...props}>
+    <path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+  </Icon>
+);
+
+export const HistoryIcon = (props) => (
+  <Icon {...props}>
+    <path d="M3 12a9 9 0 1 0 3-6.7L3 8" />
+    <path d="M3 3v5h5M12 7v5l3 3" />
+  </Icon>
+);
+
+export const SheetIcon = (props) => (
+  <Icon {...props}>
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <path d="M3 9h18M3 15h18M9 3v18" />
+  </Icon>
+);
+
+export const QuoteIcon = ({ className = 'size-5', ...props }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    focusable="false"
+    className={className}
+    {...props}
+  >
+    <path d="M9.6 5C6 6.6 3.5 9.6 3.5 13.5c0 3 1.8 5.5 4.6 5.5 2.2 0 3.9-1.7 3.9-3.9 0-2.1-1.5-3.6-3.5-3.6-.4 0-.8.1-1.1.2.4-2 2-3.8 3.9-4.8L9.6 5Zm9.5 0c-3.6 1.6-6.1 4.6-6.1 8.5 0 3 1.8 5.5 4.6 5.5 2.2 0 3.9-1.7 3.9-3.9 0-2.1-1.5-3.6-3.5-3.6-.4 0-.8.1-1.1.2.4-2 2-3.8 3.9-4.8L19.1 5Z" />
+  </svg>
+);
+
+export const ImageIcon = (props) => (
+  <Icon {...props}>
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <circle cx="9" cy="9" r="2" />
+    <path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21" />
+  </Icon>
+);

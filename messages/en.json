@@ -122,19 +122,99 @@
     "context": "Maintenance management system for industrial HVAC",
     "techLabel": "Technologies",
     "tech": ["MongoDB", "Express", "React", "Node.js"],
-    "highlights": [
-      "Designed and built, end to end, the system that replaced a local Access database; in production since 2023.",
-      "160 active users manage 2,900 units across 11 industrial plants, with more than 22,000 work orders logged since 2024.",
-      "Cut the time to log completed work from an average of 3 days (with delays of up to 2 weeks) to the same day."
+    "summary": "Designed and built, end to end, the system that replaced a local Access database; in production since 2023.",
+    "metricsTitle": "By the numbers",
+    "metrics": [
+      {
+        "value": "160",
+        "label": "active users"
+      },
+      {
+        "value": "2,900",
+        "label": "units"
+      },
+      {
+        "value": "11",
+        "label": "industrial plants"
+      },
+      {
+        "value": "22,000+",
+        "label": "work orders since 2024"
+      }
     ],
+    "comparison": {
+      "title": "Before and after",
+      "before": {
+        "title": "Before",
+        "items": [
+          "Access forms on a network of 3 computers",
+          "Paper sheets typed in by the tool-room supervisor",
+          "Data entered in 3 days on average (up to 2 weeks)"
+        ]
+      },
+      "after": {
+        "title": "After",
+        "items": [
+          "Web system with role-based access",
+          "Technicians log their own work",
+          "Information available the same day"
+        ]
+      }
+    },
+    "rolesTitle": "Who uses it",
+    "roles": [
+      {
+        "id": "supervisors",
+        "name": "Supervisors",
+        "text": "Plan and create work orders."
+      },
+      {
+        "id": "technicians",
+        "name": "Technicians",
+        "text": "See their assignments and log progress."
+      },
+      {
+        "id": "admins",
+        "name": "Administrators",
+        "text": "Monitor activity."
+      },
+      {
+        "id": "managers",
+        "name": "Managers",
+        "text": "Review history and trends."
+      }
+    ],
+    "featuresTitle": "Key features",
+    "features": [
+      {
+        "id": "access",
+        "text": "Role-based web access"
+      },
+      {
+        "id": "orders",
+        "text": "Work-order entry designed for minimal typing"
+      },
+      {
+        "id": "history",
+        "text": "Full history per unit"
+      },
+      {
+        "id": "excel",
+        "text": "Excel import and export"
+      }
+    ],
+    "why": {
+      "title": "Why me",
+      "text": "I had worked for 5 years as general administrator at one of the plants, so I knew firsthand what needed to be recorded. I started the system as a personal project and, once I showed it, the company decided to adopt it."
+    },
+    "caseToggle": {
+      "show": "Read the full case study",
+      "hide": "Hide the full case study"
+    },
     "details": [
       {
         "title": "The problem",
         "text": "The company tracked its activity with Access forms on a network of three computers. Technicians filled in paper sheets that the tool-room supervisor then typed in; data took 3 days on average to be entered, and sometimes up to 2 weeks. The system had been designed by someone outside the business, and data entry was often a source of problems."
-      },
-      {
-        "title": "Why me",
-        "text": "I had worked for 5 years as general administrator at one of the plants, so I knew firsthand what needed to be recorded. I started the system as a personal project and, once I showed it, the company decided to adopt it."
       },
       {
         "title": "What I built",
@@ -145,6 +225,10 @@
         "text": "Technicians log their own work and the information is available the same day. Management uses the history and the trend in service requests to back budget decisions."
       }
     ],
+    "screenshots": {
+      "title": "Screenshots",
+      "placeholder": "Screenshots coming soon"
+    },
     "demo": {
       "label": "View demo",
       "url": ""
