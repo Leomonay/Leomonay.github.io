@@ -11,5 +11,35 @@
     "title": "Page not found",
     "text": "The page you are looking for doesn't exist.",
     "back": "Go to the home page"
+  },
+  "language": {
+    "name": "English"
+  },
+  "nav": {
+    "brand": "Leonardo Monay",
+    "label": "Sections",
+    "language": "Language",
+    "skipToContent": "Skip to content",
+    "menu": {
+      "open": "Open sections menu",
+      "close": "Close sections menu"
+    },
+    "sections": {
+      "about": "About",
+      "featured-project": "Project",
+      "experience": "Experience",
+      "education": "Education",
+      "contact": "Contact"
+    }
+  },
+  "theme": {
+    "label": "Theme",
+    "trigger": "Theme: {theme}. Change theme",
+    "changed": "Theme changed to {theme}",
+    "options": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
   }
 }

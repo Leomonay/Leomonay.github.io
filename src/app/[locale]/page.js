@@ -1,10 +1,17 @@
 import { useTranslations } from 'next-intl';
+import Navbar from '@/components/navbar/Navbar';
+import { SECTIONS } from '@/lib/sections';
 
 export default function HomePage() {
   const t = useTranslations('meta');
   return (
-    <main>
-      <h1>{t('title')}</h1>
-    </main>
+    <>
+      <Navbar />
+      <main id="main">
+        <section id={SECTIONS.hero} className="section container-page">
+          <h1 className="text-4xl font-bold">{t('title')}</h1>
+        </section>
+      </main>
+    </>
   );
 }

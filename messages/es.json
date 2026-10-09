@@ -11,5 +11,35 @@
     "title": "Página no encontrada",
     "text": "La página que buscás no existe.",
     "back": "Ir al inicio"
+  },
+  "language": {
+    "name": "Español"
+  },
+  "nav": {
+    "brand": "Leonardo Monay",
+    "label": "Secciones",
+    "language": "Idioma",
+    "skipToContent": "Saltar al contenido",
+    "menu": {
+      "open": "Abrir menú de secciones",
+      "close": "Cerrar menú de secciones"
+    },
+    "sections": {
+      "about": "Sobre mí",
+      "featured-project": "Proyecto",
+      "experience": "Experiencia",
+      "education": "Formación",
+      "contact": "Contacto"
+    }
+  },
+  "theme": {
+    "label": "Tema",
+    "trigger": "Tema: {theme}. Cambiar tema",
+    "changed": "Tema cambiado a {theme}",
+    "options": {
+      "light": "Claro",
+      "dark": "Oscuro",
+      "system": "Sistema"
+    }
   }
 }
