@@ -50,6 +50,26 @@
   }
 }
 
+/*
+ * Content fade (opacity only) on top of the height change. Applies only with JS,
+ * since without it the panel is always open. A brief fade is kept even under
+ * reduced motion (no movement), while the height change is instant there.
+ * Note: grid-template-rows does trigger layout; it's a deliberate exception to the
+ * transform/opacity rule (a real height can't be animated otherwise without JS
+ * measuring), user-initiated and short, so it never counts as CLS.
+ */
+@media (scripting: enabled) {
+  .disclosure-panel > * {
+    opacity: 0;
+    transition: opacity 150ms ease-in;
+  }
+
+  .disclosure-panel[data-open] > * {
+    opacity: 1;
+    transition: opacity 250ms ease-out 60ms;
+  }
+}
+
 /* Without JS the panel is always open, so the toggle would only mislead. */
 @media (scripting: none) {
   .disclosure-trigger {
