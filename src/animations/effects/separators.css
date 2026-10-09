@@ -1,0 +1,33 @@
+/*
+ * Hairline between consecutive page sections that fades out toward both sides.
+ * Pure decoration (a ::before), so it adds no element and can't shift layout.
+ * It also draws the featured band's edges, replacing its former border-y.
+ */
+
+main > section {
+  position: relative;
+}
+
+main > section + section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(64rem, 100% - 2rem);
+  height: 1px;
+  translate: -50% 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--color-primary) 35%, transparent),
+    transparent
+  );
+  pointer-events: none;
+}
+
+@media (forced-colors: active) {
+  main > section + section::before {
+    background: CanvasText;
+    opacity: 0.3;
+  }
+}

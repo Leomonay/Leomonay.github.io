@@ -58,7 +58,7 @@ export default async function FeaturedProject() {
     <Section
       id={SECTIONS.featured}
       title={t('title')}
-      className="border-y border-base-300 bg-base-200"
+      className="bg-base-200"
       decoration={
         // Decorative layer for the next phase's background effects (gradients).
         <div aria-hidden="true" className="featured-backdrop absolute inset-0 -z-10" />

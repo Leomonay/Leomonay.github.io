@@ -26,6 +26,7 @@
 @import './effects/featured-backdrop.css';
 @import './effects/text-gradient.css';
 @import './effects/gradient-border.css';
+@import './effects/separators.css';
 
 @theme {
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
