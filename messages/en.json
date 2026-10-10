@@ -267,7 +267,7 @@
           },
           {
             "title": "React Query",
-            "text": "Building on the Tech Lead's initial implementation, I developed the custom hooks to roll it out to the rest of the platform."
+            "text": "Building on the Tech Lead's initial implementation, I developed the custom hooks to roll it out to the rest of the platform. The result: fewer server requests, a more consistent cache, and hooks that respond better when several components use them in the same view."
           },
           {
             "title": "AI-generated tools",
@@ -331,10 +331,10 @@
         "company": "Globant",
         "role": "QA Automation Engineer (Trainee)",
         "period": "May 2021 – Dec 2022",
-        "context": "Software consultancy · Client: international bank",
+        "context": "Software consultancy · Client: Citi (Mexico)",
         "tech": ["Java", "JUnit", "Selenium", "Appium", "Android Studio", "iOS"],
         "highlights": [
-          "Created and maintained automated tests for an international bank's mobile app on Android and iOS, after training in test automation with Java and JUnit."
+          "Created and maintained automated tests for the Citi (Mexico) mobile app on Android and iOS, after training in test automation with Java and JUnit."
         ]
       },
       {
