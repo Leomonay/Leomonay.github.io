@@ -7,7 +7,6 @@ import {
   ClipboardIcon,
   CloseIcon,
   HistoryIcon,
-  ImageIcon,
   KeyIcon,
   PencilIcon,
   QuoteIcon,
@@ -18,6 +17,7 @@ import {
 import TagList from '@/components/TagList';
 import Button from '@/components/ui/Button';
 import Disclosure from '@/components/ui/Disclosure';
+import Gallery from '@/components/ui/Gallery';
 import IconList from '@/components/ui/IconList';
 import Section from '@/components/ui/Section';
 import Stat from '@/components/ui/Stat';
@@ -37,6 +37,36 @@ const FEATURE_ICONS = {
   excel: SheetIcon,
 };
 
+// Demo screenshots (fictitious data), matched by `id` in featured.screenshots.items.
+const SCREENSHOTS_DIR = '/projects/mantenimiento-hvac';
+const DESKTOP = { width: 1440, height: 810 };
+const PHONE = { width: 750, height: 1334 };
+const SCREENSHOT_GROUPS = [
+  // Cover: full width.
+  {
+    key: 'cover',
+    ids: ['device-detail'],
+    size: DESKTOP,
+    className: '',
+    sizes: '(min-width: 72rem) 68rem, 100vw',
+  },
+  {
+    key: 'desktop',
+    ids: ['orders-list', 'admin-plan-calendar', 'order-intervention', 'tech-order'],
+    size: DESKTOP,
+    className: 'grid gap-4 sm:grid-cols-2 sm:gap-6',
+    sizes: '(min-width: 72rem) 34rem, (min-width: 40rem) 50vw, 100vw',
+  },
+  // Phone shots side by side and smaller, so they don't dominate the grid.
+  {
+    key: 'phone',
+    ids: ['worker-panel', 'worker-order'],
+    size: PHONE,
+    className: 'grid max-w-md grid-cols-2 gap-4 sm:gap-6',
+    sizes: '14rem',
+  },
+];
+
 const subheading = 'mb-4 font-display text-xl font-bold text-base-content';
 
 /**
@@ -54,6 +84,7 @@ export default async function FeaturedProject() {
   const tCommon = await getTranslations('common');
   // Empty until there's a public demo; set featured.demo.url in both messages files.
   const demoUrl = t.raw('demo.url');
+  const shotIndex = Object.fromEntries(t.raw('screenshots.items').map(({ id }, i) => [id, i]));
 
   return (
     <Section
@@ -214,14 +245,23 @@ export default async function FeaturedProject() {
         {/* Screenshots + demo */}
         <div data-reveal="fade-up">
           <h4 className={subheading}>{t('screenshots.title')}</h4>
-          {/* TODO(featured): replace with real, anonymized screenshots when available
-              (next/image works with `images.unoptimized`; export them sized, AVIF/WebP). */}
-          <div className="grid aspect-video max-h-56 w-full place-items-center rounded-box border-2 border-dashed border-base-300 bg-base-100 text-base-content/75">
-            <div className="flex flex-col items-center gap-2 text-center">
-              <ImageIcon className="size-8" />
-              <p>{t('screenshots.placeholder')}</p>
-            </div>
-          </div>
+          <p className="mb-4 text-sm text-base-content/75">{t('screenshots.note')}</p>
+          <Gallery
+            openLabel={t('screenshots.open')}
+            closeLabel={t('screenshots.close')}
+            groups={SCREENSHOT_GROUPS.map(({ ids, size, ...group }) => ({
+              ...group,
+              items: ids.map((id) => {
+                const i = shotIndex[id];
+                return {
+                  src: `${SCREENSHOTS_DIR}/demo-${id}.webp`,
+                  ...size,
+                  alt: t(`screenshots.items.${i}.alt`),
+                  caption: t(`screenshots.items.${i}.caption`),
+                };
+              }),
+            }))}
+          />
           {demoUrl && (
             <Button href={demoUrl} target="_blank" rel="noopener noreferrer" className="mt-4">
               {t('demo.label')}

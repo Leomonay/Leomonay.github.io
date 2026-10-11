@@ -227,7 +227,46 @@
     ],
     "screenshots": {
       "title": "Screenshots",
-      "placeholder": "Screenshots coming soon"
+      "note": "Screenshots from a demo with fictitious data; the real data belongs to the client.",
+      "open": "enlarge",
+      "close": "Close screenshot",
+      "items": [
+        {
+          "id": "device-detail",
+          "alt": "Detail page of an HVAC unit with its work-order history, complaints and intervention charts.",
+          "caption": "Per-unit history, with complaints and charts, for management follow-up."
+        },
+        {
+          "id": "orders-list",
+          "alt": "Work-order list with plant and status filters and a status badge on each order.",
+          "caption": "Work-order list with filters and statuses, for supervisors and admins."
+        },
+        {
+          "id": "admin-plan-calendar",
+          "alt": "Preventive-maintenance calendar for a plant, with tasks scheduled by date.",
+          "caption": "Preventive-maintenance planning per plant."
+        },
+        {
+          "id": "order-intervention",
+          "alt": "Work-order form for logging an intervention: technicians, tasks and refrigerant gas used.",
+          "caption": "Logging interventions on an order: technicians, tasks and refrigerant gas."
+        },
+        {
+          "id": "tech-order",
+          "alt": "Form to create a new technical order.",
+          "caption": "New technical order, being rolled out plant by plant."
+        },
+        {
+          "id": "worker-panel",
+          "alt": "Technician dashboard on a phone, listing the orders assigned to them.",
+          "caption": "Technician mobile view: their assignments."
+        },
+        {
+          "id": "worker-order",
+          "alt": "Work order open on a technician’s phone, with the form to log progress.",
+          "caption": "Technician mobile view: logging progress on an order."
+        }
+      ]
     },
     "demo": {
       "label": "View demo",

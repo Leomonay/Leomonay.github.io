@@ -227,7 +227,46 @@
     ],
     "screenshots": {
       "title": "Capturas",
-      "placeholder": "Capturas en preparación"
+      "note": "Capturas de una demo con datos ficticios; los datos reales pertenecen al cliente.",
+      "open": "ampliar",
+      "close": "Cerrar captura",
+      "items": [
+        {
+          "id": "device-detail",
+          "alt": "Ficha de un equipo de climatización con su historial de órdenes, reclamos y gráficos de intervenciones.",
+          "caption": "Historial por equipo, con reclamos y gráficos, para el seguimiento gerencial."
+        },
+        {
+          "id": "orders-list",
+          "alt": "Listado de órdenes de trabajo con filtros por planta y estado, y una etiqueta de estado en cada orden.",
+          "caption": "Listado de órdenes de trabajo con filtros y estados, para supervisores y administradores."
+        },
+        {
+          "id": "admin-plan-calendar",
+          "alt": "Calendario de mantenimiento preventivo de una planta, con las tareas planificadas por fecha.",
+          "caption": "Planificación del mantenimiento preventivo por planta."
+        },
+        {
+          "id": "order-intervention",
+          "alt": "Formulario de una orden de trabajo para cargar una intervención: técnicos, tareas y gas refrigerante usado.",
+          "caption": "Carga de intervenciones en una orden: técnicos, tareas y gas refrigerante."
+        },
+        {
+          "id": "tech-order",
+          "alt": "Formulario de alta de una nueva orden técnica.",
+          "caption": "Nueva orden técnica, en implementación gradual por planta."
+        },
+        {
+          "id": "worker-panel",
+          "alt": "Panel del técnico en el celular, con la lista de órdenes que tiene asignadas.",
+          "caption": "Vista móvil del técnico: sus asignaciones."
+        },
+        {
+          "id": "worker-order",
+          "alt": "Orden de trabajo abierta en el celular del técnico, con el formulario para cargar avances.",
+          "caption": "Vista móvil del técnico: carga de avances en la orden."
+        }
+      ]
     },
     "demo": {
       "label": "Ver demo",
