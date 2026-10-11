@@ -54,16 +54,17 @@ const SCREENSHOT_GROUPS = [
     key: 'desktop',
     ids: ['orders-list', 'admin-plan-calendar', 'order-intervention', 'tech-order'],
     size: DESKTOP,
-    className: 'grid gap-4 sm:grid-cols-2 sm:gap-6',
-    sizes: '(min-width: 72rem) 34rem, (min-width: 40rem) 50vw, 100vw',
+    // From sm up: ~300px thumbnails, as many columns as fit.
+    className: 'grid gap-4 sm:grid-cols-[repeat(auto-fill,minmax(280px,300px))] sm:gap-6',
+    sizes: '(min-width: 40rem) 300px, 100vw',
   },
   // Phone shots side by side and smaller, so they don't dominate the grid.
   {
     key: 'phone',
     ids: ['worker-panel', 'worker-order'],
     size: PHONE,
-    className: 'grid max-w-md grid-cols-2 gap-4 sm:gap-6',
-    sizes: '14rem',
+    className: 'grid max-w-md grid-cols-2 gap-4 sm:grid-cols-[repeat(2,150px)] sm:gap-6',
+    sizes: '(min-width: 40rem) 150px, 50vw',
   },
 ];
 
