@@ -38,33 +38,52 @@ const FEATURE_ICONS = {
 };
 
 // Demo screenshots (fictitious data), matched by `id` in featured.screenshots.items.
+// `thumb` sets each thumbnail's box; the lightbox always shows the full image.
 const SCREENSHOTS_DIR = '/projects/mantenimiento-hvac';
 const DESKTOP = { width: 1440, height: 810 };
 const PHONE = { width: 750, height: 1334 };
+const THUMBS = {
+  // Full width on small screens; from sm, ~300×170 (16:9).
+  desktop: {
+    ...DESKTOP,
+    className: 'w-full sm:w-[300px]',
+    imageClassName: 'aspect-video',
+    sizes: '(min-width: 40rem) 300px, 100vw',
+  },
+  // Side by side on small screens; from sm, ~102×170 (3:5) cropped to the top of the screen.
+  phone: {
+    ...PHONE,
+    className: 'w-[calc(50%-0.5rem)] sm:w-[102px]',
+    imageClassName: 'aspect-[750/1334] object-cover object-top sm:aspect-[3/5]',
+    sizes: '(min-width: 40rem) 102px, 50vw',
+  },
+};
 const SCREENSHOT_GROUPS = [
   // Cover: full width.
   {
     key: 'cover',
-    ids: ['device-detail'],
-    size: DESKTOP,
     className: '',
-    sizes: '(min-width: 72rem) 68rem, 100vw',
+    items: [
+      {
+        id: 'device-detail',
+        ...DESKTOP,
+        imageClassName: '',
+        sizes: '(min-width: 72rem) 68rem, 100vw',
+      },
+    ],
   },
+  // The other six in one wrapping row, all the same height from sm.
   {
-    key: 'desktop',
-    ids: ['orders-list', 'admin-plan-calendar', 'order-intervention', 'tech-order'],
-    size: DESKTOP,
-    // From sm up: ~300px thumbnails, as many columns as fit.
-    className: 'grid gap-4 sm:grid-cols-[repeat(auto-fill,minmax(280px,300px))] sm:gap-6',
-    sizes: '(min-width: 40rem) 300px, 100vw',
-  },
-  // Phone shots side by side and smaller, so they don't dominate the grid.
-  {
-    key: 'phone',
-    ids: ['worker-panel', 'worker-order'],
-    size: PHONE,
-    className: 'grid max-w-md grid-cols-2 gap-4 sm:grid-cols-[repeat(2,150px)] sm:gap-6',
-    sizes: '(min-width: 40rem) 150px, 50vw',
+    key: 'thumbs',
+    className: 'flex flex-wrap items-start gap-4 sm:gap-6',
+    items: [
+      ['orders-list', 'desktop'],
+      ['admin-plan-calendar', 'desktop'],
+      ['order-intervention', 'desktop'],
+      ['tech-order', 'desktop'],
+      ['worker-panel', 'phone'],
+      ['worker-order', 'phone'],
+    ].map(([id, thumb]) => ({ id, ...THUMBS[thumb] })),
   },
 ];
 
@@ -250,13 +269,13 @@ export default async function FeaturedProject() {
           <Gallery
             openLabel={t('screenshots.open')}
             closeLabel={t('screenshots.close')}
-            groups={SCREENSHOT_GROUPS.map(({ ids, size, ...group }) => ({
+            groups={SCREENSHOT_GROUPS.map(({ items, ...group }) => ({
               ...group,
-              items: ids.map((id) => {
+              items: items.map(({ id, ...thumb }) => {
                 const i = shotIndex[id];
                 return {
+                  ...thumb,
                   src: `${SCREENSHOTS_DIR}/demo-${id}.webp`,
-                  ...size,
                   alt: t(`screenshots.items.${i}.alt`),
                   caption: t(`screenshots.items.${i}.caption`),
                 };

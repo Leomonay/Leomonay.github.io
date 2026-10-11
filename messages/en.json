@@ -259,12 +259,12 @@
         {
           "id": "worker-panel",
           "alt": "Technician dashboard on a phone, listing the orders assigned to them.",
-          "caption": "Technician mobile view: their assignments."
+          "caption": "Assignments (mobile)."
         },
         {
           "id": "worker-order",
           "alt": "Work order open on a technician’s phone, with the form to log progress.",
-          "caption": "Technician mobile view: logging progress on an order."
+          "caption": "Logging progress (mobile)."
         }
       ]
     },

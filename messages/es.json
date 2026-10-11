@@ -259,12 +259,12 @@
         {
           "id": "worker-panel",
           "alt": "Panel del técnico en el celular, con la lista de órdenes que tiene asignadas.",
-          "caption": "Vista móvil del técnico: sus asignaciones."
+          "caption": "Asignaciones (móvil)."
         },
         {
           "id": "worker-order",
           "alt": "Orden de trabajo abierta en el celular del técnico, con el formulario para cargar avances.",
-          "caption": "Vista móvil del técnico: carga de avances en la orden."
+          "caption": "Carga de avances (móvil)."
         }
       ]
     },

@@ -9,8 +9,9 @@ import { button } from '@/components/ui/Button';
  * Screenshot grid with a lightbox.
  * - Each thumbnail is a link to the full image, so it still works without JS; with JS
  *   the click opens a native <dialog> instead (focus trap, Esc and focus return for free).
- * - `groups` are rendered in order; each one sets its own grid classes, so the cover can
- *   span the full width and the phone shots can sit side by side at a smaller size.
+ * - `groups` are rendered in order, each with its own layout classes; each item brings
+ *   its own figure width (`className`), thumbnail box (`imageClassName`) and `sizes`, so
+ *   the caption takes the thumbnail's width.
  * - Clicking the backdrop (outside the figure) also closes the dialog.
  */
 export default function Gallery({ groups, openLabel, closeLabel }) {
@@ -28,10 +29,10 @@ export default function Gallery({ groups, openLabel, closeLabel }) {
   return (
     <>
       <div className="flex flex-col gap-4 sm:gap-6">
-        {groups.map(({ key, className, sizes, items }) => (
+        {groups.map(({ key, className, items }) => (
           <div key={key} className={className}>
             {items.map((item) => (
-              <figure key={item.src} className="flex flex-col gap-2">
+              <figure key={item.src} className={`flex flex-col gap-2 ${item.className ?? ''}`}>
                 <a
                   href={item.src}
                   onClick={(event) => open(event, item)}
@@ -42,8 +43,8 @@ export default function Gallery({ groups, openLabel, closeLabel }) {
                     width={item.width}
                     height={item.height}
                     alt={item.alt}
-                    sizes={sizes}
-                    className="h-auto w-full"
+                    sizes={item.sizes}
+                    className={`h-auto w-full ${item.imageClassName}`}
                   />
                   <span className="sr-only"> ({openLabel})</span>
                 </a>
