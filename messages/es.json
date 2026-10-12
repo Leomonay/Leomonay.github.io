@@ -121,10 +121,10 @@
   },
   "featured": {
     "title": "Proyecto destacado",
-    "company": "Tecnoapp",
+    "company": "TecnoApp",
     "role": "Desarrollador Full Stack Freelance",
     "period": "jun 2021 – actualidad",
-    "context": "Sistema de gestión de mantenimiento de climatización industrial",
+    "context": "Sistema que diseñé y desarrollo para Tecnoclima S.A., en producción desde 2023",
     "techLabel": "Tecnologías",
     "tech": ["MongoDB", "Express", "React", "Node.js"],
     "summary": "Diseñé y desarrollé de punta a punta el sistema que reemplazó una base Access local, en producción desde 2023.",
@@ -368,7 +368,7 @@
         "url": "https://web.archive.org/web/20230918214334/https://kelp.digital/",
         "tech": ["SvelteKit", "TailwindCSS", "DaisyUI", "pnpm", "GitLab", "Lighthouse"],
         "highlights": [
-          "Construí completos los sitios de <link>Kelp Digital</link> y Anagolay a partir de diseños.",
+          "Desarrollé de punta a punta los sitios de <link>Kelp Digital</link> y Anagolay a partir de diseños.",
           "Mantuve un estándar de 95+ en Lighthouse (llegando a 96–98) optimizando imágenes, carga y SEO.",
           "Aseguré compatibilidad en Chrome, Firefox, Edge y Safari, trabajando en un equipo internacional en inglés."
         ],
@@ -440,7 +440,7 @@
       },
       {
         "company": "Tecnoclima S.A. (en Ternium)",
-        "role": "Administrador interno",
+        "role": "Administrador general",
         "period": "2013–2018",
         "summary": "Implementé la base de datos y la identificación de equipos; presupuestos, planes de mantenimiento y reportes a gerencia."
       },

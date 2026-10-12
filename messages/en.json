@@ -121,10 +121,10 @@
   },
   "featured": {
     "title": "Featured project",
-    "company": "Tecnoapp",
+    "company": "TecnoApp",
     "role": "Freelance Full Stack Developer",
     "period": "Jun 2021 – present",
-    "context": "Maintenance management system for industrial HVAC",
+    "context": "System I designed and maintain for Tecnoclima S.A., in production since 2023",
     "techLabel": "Technologies",
     "tech": ["MongoDB", "Express", "React", "Node.js"],
     "summary": "Designed and built, end to end, the system that replaced a local Access database; in production since 2023.",
@@ -368,7 +368,7 @@
         "url": "https://web.archive.org/web/20230918214334/https://kelp.digital/",
         "tech": ["SvelteKit", "TailwindCSS", "DaisyUI", "pnpm", "GitLab", "Lighthouse"],
         "highlights": [
-          "Built the <link>Kelp Digital</link> and Anagolay websites end to end from designs.",
+          "Built end to end the websites of <link>Kelp Digital</link> and Anagolay from designs.",
           "Kept a Lighthouse standard of 95+ (reaching 96–98) by optimizing images, loading and SEO.",
           "Ensured compatibility across Chrome, Firefox, Edge and Safari while working in an international, English-speaking team."
         ],
@@ -408,7 +408,7 @@
       {
         "id": "tecla-coding-academy",
         "company": "Tecla Coding Academy",
-        "role": "Project Review Tutor",
+        "role": "Code Review Tutor",
         "period": "Jun 2021 – Feb 2022 and Apr 2023 – Aug 2023",
         "tech": ["Teaching", "Code review"],
         "highlights": [
@@ -440,7 +440,7 @@
       },
       {
         "company": "Tecnoclima S.A. (at Ternium)",
-        "role": "In-house administrator",
+        "role": "General administrator",
         "period": "2013–2018",
         "summary": "Implemented the equipment database and labeling; budgets, maintenance plans and reports to management."
       },
