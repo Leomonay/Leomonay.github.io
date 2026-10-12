@@ -12,6 +12,11 @@ import { button } from '@/components/ui/Button';
  * - `groups` are rendered in order, each with its own layout classes; each item brings
  *   its own figure width (`className`), thumbnail box (`imageClassName`) and `sizes`, so
  *   the caption takes the thumbnail's width.
+ * - An item may bring a lighter `thumb` ({ src, width, height }), e.g. a top crop of a
+ *   full-page capture; the link and the lightbox still use the full image.
+ * - `fullPage` items (very tall captures) scroll inside the lightbox at a readable
+ *   width (`lightboxClassName`) instead of being shrunk to fit its height.
+ * - A group may bring a `footer` (e.g. links) rendered below its thumbnails.
  * - Clicking the backdrop (outside the figure) also closes the dialog.
  */
 export default function Gallery({ groups, openLabel, closeLabel }) {
@@ -29,28 +34,31 @@ export default function Gallery({ groups, openLabel, closeLabel }) {
   return (
     <>
       <div className="flex flex-col gap-4 sm:gap-6">
-        {groups.map(({ key, className, items }) => (
-          <div key={key} className={className}>
-            {items.map((item) => (
-              <figure key={item.src} className={`flex flex-col gap-2 ${item.className ?? ''}`}>
-                <a
-                  href={item.src}
-                  onClick={(event) => open(event, item)}
-                  className="block overflow-hidden rounded-box border border-base-300 bg-base-100 transition-colors hover:border-primary focus-visible:border-primary motion-reduce:transition-none"
-                >
-                  <Image
-                    src={item.src}
-                    width={item.width}
-                    height={item.height}
-                    alt={item.alt}
-                    sizes={item.sizes}
-                    className={`h-auto w-full ${item.imageClassName}`}
-                  />
-                  <span className="sr-only"> ({openLabel})</span>
-                </a>
-                <figcaption className="text-sm text-base-content/75">{item.caption}</figcaption>
-              </figure>
-            ))}
+        {groups.map(({ key, className, items, footer }) => (
+          <div key={key} className="flex flex-col gap-3">
+            <div className={className}>
+              {items.map((item) => (
+                <figure key={item.src} className={`flex flex-col gap-2 ${item.className ?? ''}`}>
+                  <a
+                    href={item.src}
+                    onClick={(event) => open(event, item)}
+                    className="block overflow-hidden rounded-box border border-base-300 bg-base-100 transition-colors hover:border-primary focus-visible:border-primary motion-reduce:transition-none"
+                  >
+                    <Image
+                      src={item.thumb?.src ?? item.src}
+                      width={item.thumb?.width ?? item.width}
+                      height={item.thumb?.height ?? item.height}
+                      alt={item.alt}
+                      sizes={item.sizes}
+                      className={`h-auto w-full ${item.imageClassName}`}
+                    />
+                    <span className="sr-only"> ({openLabel})</span>
+                  </a>
+                  <figcaption className="text-sm text-base-content/75">{item.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+            {footer}
           </div>
         ))}
       </div>
@@ -78,13 +86,29 @@ export default function Gallery({ groups, openLabel, closeLabel }) {
           </button>
           {current && (
             <>
-              <Image
-                src={current.src}
-                width={current.width}
-                height={current.height}
-                alt={current.alt}
-                className="max-h-[75dvh] w-auto max-w-full self-center object-contain"
-              />
+              {current.fullPage ? (
+                // Focusable so the page can be scrolled with the keyboard too.
+                <div
+                  tabIndex={0}
+                  className={`max-h-[75dvh] max-w-full self-center overflow-y-auto overscroll-contain rounded-field ${current.lightboxClassName ?? ''}`}
+                >
+                  <Image
+                    src={current.src}
+                    width={current.width}
+                    height={current.height}
+                    alt={current.alt}
+                    className="h-auto w-full"
+                  />
+                </div>
+              ) : (
+                <Image
+                  src={current.src}
+                  width={current.width}
+                  height={current.height}
+                  alt={current.alt}
+                  className="max-h-[75dvh] w-auto max-w-full self-center object-contain"
+                />
+              )}
               <figcaption className="text-sm text-base-content/75">{current.caption}</figcaption>
             </>
           )}

@@ -89,9 +89,9 @@
   "about": {
     "title": "About me",
     "paragraphs": [
-      "I'm an industrial engineer and a teacher. Before I started programming, I spent about fifteen years in industry: power distribution, manufacturing, maintenance, logistics and production. That's where I learned how much it takes for information to be recorded correctly and on time.",
-      "As an administrator at Tecnoclima, I implemented the plant's equipment database and saw the problems with its management system firsthand. When I learned to code, I built the one that 160 people across 11 plants use today.",
-      "Today I work as a frontend developer on an education platform, where my two backgrounds come together: the technical one and the teaching one."
+      "I'm an industrial engineer, a teacher and a web developer. Before focusing on software development, I worked across different areas of industry, such as manufacturing, maintenance, logistics and production. That experience showed me firsthand how important reliable information is for managing processes and making decisions.",
+      "Out of a concrete need to track equipment, I built a maintenance management solution, an experience that sparked my interest in software development.",
+      "I currently work as a frontend developer on an education platform, where I combine my technical knowledge with my background in engineering and teaching to help build tools that make learning easier."
     ],
     "journeyTitle": "My path",
     "journey": [
@@ -116,7 +116,7 @@
   },
   "featured": {
     "title": "Featured project",
-    "company": "Tecnoclima S.A.",
+    "company": "Tecnoapp",
     "role": "Freelance Full Stack Developer",
     "period": "Jun 2021 – present",
     "context": "Maintenance management system for industrial HVAC",
@@ -281,6 +281,14 @@
       "hide": "Hide details",
       "context": "for {company}"
     },
+    "screenshots": {
+      "title": "Websites",
+      "open": "enlarge",
+      "close": "Close screenshot",
+      "desktopCaption": "{site}, desktop",
+      "mobileCaption": "{site}, mobile",
+      "archive": "View archived version<sr> of {site}</sr>"
+    },
     "items": [
       {
         "id": "tecla-academy",
@@ -352,7 +360,7 @@
         "role": "Frontend Developer",
         "period": "Mar 2022 – Sep 2023",
         "context": "Software startup · International team, working in English",
-        "url": "https://kelp.digital",
+        "url": "https://web.archive.org/web/20230918214334/https://kelp.digital/",
         "tech": ["SvelteKit", "TailwindCSS", "DaisyUI", "pnpm", "GitLab", "Lighthouse"],
         "highlights": [
           "Built the <link>Kelp Digital</link> and Anagolay websites end to end from designs.",
@@ -362,6 +370,22 @@
         "details": [
           {
             "text": "I built complete pages in SvelteKit (structure, navigation, Tailwind configuration), plus SEO, Twitter Cards and image optimization, until they cleared the Lighthouse threshold of 95 the company required. I also contributed with SvelteKit to Macula, the product's application."
+          }
+        ],
+        "sites": [
+          {
+            "id": "kelp",
+            "name": "Kelp Digital",
+            "archiveUrl": "https://web.archive.org/web/20230918214334/https://kelp.digital/",
+            "desktopAlt": "Kelp Digital home page on desktop: dark space background with a planet, the headline “Restore creative balance in the Galaxy”, cards about protecting creative work and the company's products.",
+            "mobileAlt": "Kelp Digital home page on a phone, with the same content stacked in a single column."
+          },
+          {
+            "id": "anagolay",
+            "name": "Anagolay",
+            "archiveUrl": "https://web.archive.org/web/20230924073335/https://anagolay.network/",
+            "desktopAlt": "Anagolay home page on desktop: dark starry background, the headline “Manage your content on your terms”, a green isometric illustration and a grid of features for creators.",
+            "mobileAlt": "Anagolay home page on a phone, with the same content stacked in a single column."
           }
         ]
       },

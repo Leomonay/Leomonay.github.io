@@ -89,9 +89,9 @@
   "about": {
     "title": "Sobre mí",
     "paragraphs": [
-      "Soy ingeniero industrial y docente. Antes de programar trabajé unos quince años en la industria: distribución eléctrica, manufactura, mantenimiento, logística y producción. Ahí aprendí lo que cuesta que la información esté bien cargada y a tiempo.",
-      "Como administrador en Tecnoclima implementé la base de datos de equipos de la planta y viví de cerca los problemas de su sistema de gestión. Cuando aprendí a programar, construí el que hoy usan 160 personas en 11 plantas.",
-      "Hoy desarrollo frontend en una plataforma educativa, donde se juntan mis dos formaciones: la técnica y la docente."
+      "Soy ingeniero industrial, docente y desarrollador web. Antes de dedicarme al desarrollo de software, trabajé en distintas áreas de la industria, como manufactura, mantenimiento, logística y producción. Esa experiencia me permitió comprender de primera mano la importancia de contar con información confiable para gestionar procesos y tomar decisiones.",
+      "A partir de una necesidad concreta de trazabilidad de equipos, desarrollé una solución de gestión de mantenimiento, una experiencia que despertó mi interés por el desarrollo de software.",
+      "Actualmente trabajo como desarrollador frontend en una plataforma educativa, donde combino mis conocimientos técnicos con mi experiencia en ingeniería y docencia para contribuir al desarrollo de herramientas que faciliten el aprendizaje."
     ],
     "journeyTitle": "Mi recorrido",
     "journey": [
@@ -116,7 +116,7 @@
   },
   "featured": {
     "title": "Proyecto destacado",
-    "company": "Tecnoclima S.A.",
+    "company": "Tecnoapp",
     "role": "Desarrollador Full Stack Freelance",
     "period": "jun 2021 – actualidad",
     "context": "Sistema de gestión de mantenimiento de climatización industrial",
@@ -281,6 +281,14 @@
       "hide": "Ocultar detalle",
       "context": "de {company}"
     },
+    "screenshots": {
+      "title": "Sitios",
+      "open": "ampliar",
+      "close": "Cerrar captura",
+      "desktopCaption": "{site}, escritorio",
+      "mobileCaption": "{site}, celular",
+      "archive": "Ver versión archivada<sr> de {site}</sr>"
+    },
     "items": [
       {
         "id": "tecla-academy",
@@ -352,7 +360,7 @@
         "role": "Frontend Developer",
         "period": "mar 2022 – sep 2023",
         "context": "Startup de software · Equipo internacional, en inglés",
-        "url": "https://kelp.digital",
+        "url": "https://web.archive.org/web/20230918214334/https://kelp.digital/",
         "tech": ["SvelteKit", "TailwindCSS", "DaisyUI", "pnpm", "GitLab", "Lighthouse"],
         "highlights": [
           "Construí completos los sitios de <link>Kelp Digital</link> y Anagolay a partir de diseños.",
@@ -362,6 +370,22 @@
         "details": [
           {
             "text": "Desarrollaba las páginas completas en SvelteKit (estructura, navegación, configuración de Tailwind), SEO, Twitter Cards y optimización de imágenes hasta superar el umbral de 95 en Lighthouse que exigía la empresa. También colaboré con SvelteKit en Macula, la aplicación del producto."
+          }
+        ],
+        "sites": [
+          {
+            "id": "kelp",
+            "name": "Kelp Digital",
+            "archiveUrl": "https://web.archive.org/web/20230918214334/https://kelp.digital/",
+            "desktopAlt": "Página de inicio de Kelp Digital en escritorio: fondo espacial oscuro con un planeta, el título «Restore creative balance in the Galaxy», tarjetas sobre protección de obras y los productos de la empresa.",
+            "mobileAlt": "Página de inicio de Kelp Digital en celular, con el mismo contenido apilado en una columna."
+          },
+          {
+            "id": "anagolay",
+            "name": "Anagolay",
+            "archiveUrl": "https://web.archive.org/web/20230924073335/https://anagolay.network/",
+            "desktopAlt": "Página de inicio de Anagolay en escritorio: fondo oscuro estrellado, el título «Manage your content on your terms», una ilustración isométrica en verde y una grilla de funciones para creadores.",
+            "mobileAlt": "Página de inicio de Anagolay en celular, con el mismo contenido apilado en una columna."
           }
         ]
       },

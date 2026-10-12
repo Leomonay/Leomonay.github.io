@@ -21,6 +21,7 @@ import Gallery from '@/components/ui/Gallery';
 import IconList from '@/components/ui/IconList';
 import Section from '@/components/ui/Section';
 import Stat from '@/components/ui/Stat';
+import { THUMB_LAYOUTS } from '@/lib/screenshots';
 import { SECTIONS } from '@/lib/sections';
 
 // Icons matched by `id` in featured.roles / featured.features.
@@ -43,20 +44,8 @@ const SCREENSHOTS_DIR = '/projects/mantenimiento-hvac';
 const DESKTOP = { width: 1440, height: 810 };
 const PHONE = { width: 750, height: 1334 };
 const THUMBS = {
-  // Full width on small screens; from sm, ~300×170 (16:9).
-  desktop: {
-    ...DESKTOP,
-    className: 'w-full sm:w-[300px]',
-    imageClassName: 'aspect-video',
-    sizes: '(min-width: 40rem) 300px, 100vw',
-  },
-  // Side by side on small screens; from sm, ~102×170 (3:5) cropped to the top of the screen.
-  phone: {
-    ...PHONE,
-    className: 'w-[calc(50%-0.5rem)] sm:w-[102px]',
-    imageClassName: 'aspect-[750/1334] object-cover object-top sm:aspect-[3/5]',
-    sizes: '(min-width: 40rem) 102px, 50vw',
-  },
+  desktop: { ...DESKTOP, ...THUMB_LAYOUTS.desktop },
+  phone: { ...PHONE, ...THUMB_LAYOUTS.phone },
 };
 const SCREENSHOT_GROUPS = [
   // Cover: full width.
