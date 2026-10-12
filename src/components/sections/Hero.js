@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import {
   ArrowRightIcon,
   CodeIcon,
+  DownloadIcon,
   FactoryIcon,
   GitHubIcon,
   GlobeIcon,
@@ -18,8 +19,8 @@ import { PROFILE } from '@/lib/site';
 const FACT_ICONS = { coding: CodeIcon, industry: FactoryIcon, languages: GlobeIcon };
 
 /**
- * Hero: role, name (the page's only h1), headline, calls to action, quick facts,
- * stack and profile links.
+ * Hero: role, name (the page's only h1), headline, calls to action (including the
+ * resume download), quick facts, stack and profile links.
  *
  * It's the LCP area, so nothing here uses data-reveal (it must paint immediately)
  * and there are no images.
@@ -59,6 +60,12 @@ export default async function Hero() {
           </Button>
           <Button href={`#${SECTIONS.contact}`} intent="outline" size="lg">
             {t('cta.contact')}
+          </Button>
+          {/* Resume in the active locale; the file path lives in the messages. */}
+          <Button href={t('resume.file')} download intent="outline" size="lg">
+            <DownloadIcon />
+            {t('resume.label')}
+            <span className="sr-only"> {t('resume.format')}</span>
           </Button>
         </div>
 

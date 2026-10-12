@@ -51,6 +51,11 @@
       "featured": "Ver proyecto destacado",
       "contact": "Contacto"
     },
+    "resume": {
+      "label": "Descargar CV",
+      "format": "(PDF)",
+      "file": "/cv-leonardo-monay.pdf"
+    },
     "factsLabel": "Datos breves",
     "facts": [
       {

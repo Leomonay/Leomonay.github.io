@@ -110,6 +110,12 @@ export const ArrowRightIcon = (props) => (
   </Icon>
 );
 
+export const DownloadIcon = (props) => (
+  <Icon {...props}>
+    <path d="M12 4v11M7 10l5 5 5-5M5 20h14" />
+  </Icon>
+);
+
 export const CodeIcon = (props) => (
   <Icon {...props}>
     <path d="m16 18 6-6-6-6M8 6l-6 6 6 6" />

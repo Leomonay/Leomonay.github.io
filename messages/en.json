@@ -51,6 +51,11 @@
       "featured": "View featured project",
       "contact": "Contact"
     },
+    "resume": {
+      "label": "Download resume",
+      "format": "(PDF)",
+      "file": "/resume-leonardo-monay.pdf"
+    },
     "factsLabel": "Quick facts",
     "facts": [
       {
