@@ -107,6 +107,15 @@ export default async function Hero() {
             </p>
             <TagList labelId="hero-also" items={t.raw('also')} subtle />
           </div>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+            <p
+              id="hero-ai"
+              className="text-sm font-semibold text-base-content/75 sm:w-32 sm:shrink-0"
+            >
+              {t('aiLabel')}
+            </p>
+            <TagList labelId="hero-ai" items={t.raw('ai')} subtle />
+          </div>
         </div>
 
         <ul aria-label={t('linksLabel')} className="flex flex-wrap gap-2">

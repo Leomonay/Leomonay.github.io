@@ -75,15 +75,33 @@
     "stackLabel": "Stack principal",
     "stack": [
       "React",
+      "Next.js",
       "Svelte/SvelteKit",
       "TailwindCSS",
-      "React Query",
+      "TanStack Query",
       "Node.js",
       "Express",
       "MongoDB"
     ],
     "alsoLabel": "También",
-    "also": ["Preact", "Storybook", "Java", "Selenium", "Appium"],
+    "also": [
+      "Mantine",
+      "Radix UI",
+      "Mongoose",
+      "JWT",
+      "Playwright",
+      "Vite",
+      "Vercel",
+      "PM2",
+      "GitHub Actions",
+      "Preact",
+      "Storybook",
+      "Java",
+      "Selenium",
+      "Appium"
+    ],
+    "aiLabel": "IA",
+    "ai": ["Claude Code", "Cursor", "ChatGPT"],
     "linksLabel": "Perfiles y contacto",
     "links": {
       "github": "GitHub",
@@ -301,11 +319,20 @@
         "role": "Frontend Developer",
         "period": "oct 2023 – actualidad",
         "context": "Plataforma educativa con tutor de IA · ~20.000 usuarios · en expansión mediante convenios con escuelas",
-        "tech": ["React", "TailwindCSS", "DaisyUI", "React Query"],
+        "tech": [
+          "React",
+          "TypeScript",
+          "TailwindCSS",
+          "DaisyUI",
+          "TanStack Query",
+          "TanStack Table",
+          "Zod"
+        ],
         "highlights": [
           "Adapté a móvil una plataforma pensada para desktop, tras detectar con métricas que la mayoría de los usuarios entraba desde el celular.",
           "Construí las pantallas principales a partir del diseño: landing, home, contenidos, configuración, lecciones, grupos y reportes.",
-          "Desarrollé los hooks para extender la migración de Redux a React Query a toda la plataforma.",
+          "Desarrollé los hooks para extender la migración de Redux a TanStack Query a toda la plataforma.",
+          "Desarrollé la interfaz de chat con el tutor de IA, conectada a la API del equipo de datos.",
           "Reviso la calidad visual y pedagógica de herramientas didácticas generadas con IA."
         ],
         "details": [
@@ -318,7 +345,7 @@
             "text": "Con la incorporación de una diseñadora, implementé cada pantalla con sus componentes (sidebar, navegación y evaluaciones de lecciones, cards de grupos) y ajusté con ella lo que no era viable técnicamente."
           },
           {
-            "title": "React Query",
+            "title": "TanStack Query",
             "text": "A partir de la implementación inicial del Tech Lead, desarrollé los hooks personalizados para llevarlo al resto de la plataforma. El resultado: menos requests al servidor, un caché más consistente y hooks que responden mejor cuando varios componentes los usan en una misma vista."
           },
           {
@@ -333,7 +360,7 @@
         "role": "Frontend Developer",
         "period": "mar 2023 – oct 2023",
         "context": "Agencia de desarrollo · Cliente: e-commerce",
-        "tech": ["Preact", "JavaScript", "ESLint", "Prettier", "Git hooks"],
+        "tech": ["Preact", "TypeScript", "JavaScript", "ESLint", "Prettier", "Git hooks"],
         "highlights": [
           "Implementé variantes de componentes para pruebas A/B en la página de producto de un e-commerce.",
           "Introduje git hooks para validar formato y linting antes de cada push, lo que simplificó la revisión de cambios."
@@ -354,7 +381,7 @@
         "company": "Janis Commerce (Fizzmod S.R.L.)",
         "role": "Frontend Developer",
         "period": "dic 2022 – feb 2023",
-        "tech": ["React", "Storybook", "Atomic Design"],
+        "tech": ["React", "TypeScript", "Storybook", "Atomic Design"],
         "highlights": [
           "Desarrollé componentes y su documentación en Storybook para una aplicación de vistas dinámicas generadas a partir de una configuración JSON (componentes, tablas y filtros)."
         ]
@@ -366,7 +393,15 @@
         "period": "mar 2022 – sep 2023",
         "context": "Startup de software · Equipo internacional, en inglés",
         "url": "https://web.archive.org/web/20230918214334/https://kelp.digital/",
-        "tech": ["SvelteKit", "TailwindCSS", "DaisyUI", "pnpm", "GitLab", "Lighthouse"],
+        "tech": [
+          "SvelteKit",
+          "TypeScript",
+          "TailwindCSS",
+          "DaisyUI",
+          "pnpm",
+          "GitLab",
+          "Lighthouse"
+        ],
         "highlights": [
           "Desarrollé de punta a punta los sitios de <link>Kelp Digital</link> y Anagolay a partir de diseños.",
           "Mantuve un estándar de 95+ en Lighthouse (llegando a 96–98) optimizando imágenes, carga y SEO.",
