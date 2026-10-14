@@ -144,7 +144,19 @@
     "period": "Jun 2021 – present",
     "context": "System I designed and maintain for Tecnoclima S.A., in production since 2023",
     "techLabel": "Technologies",
-    "tech": ["MongoDB", "Express", "React", "Node.js"],
+    "tech": [
+      "React",
+      "Redux",
+      "React Router",
+      "Tailwind",
+      "DaisyUI",
+      "Chart.js",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Mongoose",
+      "JWT"
+    ],
     "summary": "Designed and built, end to end, the system that replaced a local Access database; in production since 2023.",
     "metricsTitle": "By the numbers",
     "metrics": [
@@ -248,6 +260,39 @@
         "text": "Technicians log their own work and the information is available the same day. Management uses the history and the trend in service requests to back budget decisions."
       }
     ],
+    "built": {
+      "title": "How it's built",
+      "items": [
+        {
+          "tech": "Redux",
+          "text": "global app state."
+        },
+        {
+          "tech": "Chart.js",
+          "text": "statistics and KPIs."
+        },
+        {
+          "tech": "dnd-kit",
+          "text": "drag-and-drop ordering of subtasks."
+        },
+        {
+          "tech": "xlsx · fast-csv · multer",
+          "text": "Excel import and export, plus CSV upload, to migrate the Access data."
+        },
+        {
+          "tech": "react-to-print",
+          "text": "printing work orders."
+        },
+        {
+          "tech": "JWT · bcrypt",
+          "text": "authentication and hashed passwords."
+        },
+        {
+          "tech": "PM2",
+          "text": "deployment on a virtual machine."
+        }
+      ]
+    },
     "screenshots": {
       "title": "Screenshots",
       "note": "Screenshots from a demo with fictitious data; the real data belongs to the client.",

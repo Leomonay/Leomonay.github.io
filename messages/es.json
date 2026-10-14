@@ -144,7 +144,19 @@
     "period": "jun 2021 – actualidad",
     "context": "Sistema que diseñé y desarrollo para Tecnoclima S.A., en producción desde 2023",
     "techLabel": "Tecnologías",
-    "tech": ["MongoDB", "Express", "React", "Node.js"],
+    "tech": [
+      "React",
+      "Redux",
+      "React Router",
+      "Tailwind",
+      "DaisyUI",
+      "Chart.js",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Mongoose",
+      "JWT"
+    ],
     "summary": "Diseñé y desarrollé de punta a punta el sistema que reemplazó una base Access local, en producción desde 2023.",
     "metricsTitle": "En números",
     "metrics": [
@@ -248,6 +260,39 @@
         "text": "Los técnicos cargan su trabajo directamente y la información está disponible en el día. La gerencia usa el historial y la evolución de reclamos para justificar decisiones de presupuesto."
       }
     ],
+    "built": {
+      "title": "Cómo está construido",
+      "items": [
+        {
+          "tech": "Redux",
+          "text": "estado global de la aplicación."
+        },
+        {
+          "tech": "Chart.js",
+          "text": "estadísticas e indicadores."
+        },
+        {
+          "tech": "dnd-kit",
+          "text": "orden de subtareas con arrastrar y soltar."
+        },
+        {
+          "tech": "xlsx · fast-csv · multer",
+          "text": "importación y exportación en Excel y carga de CSV, para migrar los datos de Access."
+        },
+        {
+          "tech": "react-to-print",
+          "text": "impresión de órdenes de trabajo."
+        },
+        {
+          "tech": "JWT · bcrypt",
+          "text": "autenticación y contraseñas cifradas."
+        },
+        {
+          "tech": "PM2",
+          "text": "despliegue en una máquina virtual."
+        }
+      ]
+    },
     "screenshots": {
       "title": "Capturas",
       "note": "Capturas de una demo con datos ficticios; los datos reales pertenecen al cliente.",

@@ -84,7 +84,7 @@ const subheading = 'mb-4 font-display text-xl font-bold text-base-content';
  *
  * Always visible: summary, metrics, before/after, roles, features and "why me" — the
  * case at a glance. Behind a disclosure: the long paragraphs (problem, what I built,
- * outcome), since the blocks above already summarize them; showing both would repeat
+ * outcome, how it's built), since the blocks above already summarize them; showing both would repeat
  * the story and make the section very long on phones. They stay in the HTML for SEO
  * and no-JS.
  */
@@ -288,6 +288,19 @@ export default async function FeaturedProject() {
                 <p className="text-base-content/75">{t(`details.${i}.text`)}</p>
               </div>
             ))}
+            <div>
+              <h4 className="font-semibold text-base-content">{t('built.title')}</h4>
+              <ul className="list-disc pl-5 text-base-content/75 marker:text-primary">
+                {t.raw('built.items').map((_, i) => (
+                  <li key={i}>
+                    <span className="font-medium text-base-content">
+                      {t(`built.items.${i}.tech`)}
+                    </span>
+                    : {t(`built.items.${i}.text`)}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </Disclosure>
       </article>
